@@ -1,40 +1,41 @@
-include:
-  - ./storage/docker-compose.yml
+# include:
+#   - ./storage/docker-compose.yml
 services:
-  db:
-    image: mongo:7
-    container_name: hack_db
-    env_file:
-      - ./db/.env
-    volumes:
-      - ./db/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
-      - mongovolume:/data/db
-    ports:
-      - "27017-27019:27017-27019"
-    networks:
-      - hack-network-db
-
-  api:
-    image: tiangolo/uvicorn-gunicorn-fastapi:python3.11
-    container_name: hack_api
-    ports:
-      - "8000:8000"
-    depends_on:
-      - db
-      - seafile
-    networks:
-      - hack-network-db
-      - hack-network-web
+  # db:
+  #   image: mongo:7
+  #   container_name: hack_db
+  #   env_file:
+  #     - ./db/.env
+  #   volumes:
+  #     - ./db/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+  #     - mongovolume:/data/db
+  #   ports:
+  #     - "27017-27019:27017-27019"
+  #   networks:
+  #     - hack-network-db
+  #
+  # api:
+  #   image: tiangolo/uvicorn-gunicorn-fastapi:python3.11
+  #   container_name: hack_api
+  #   command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]  # Specify the command to run your application
+  #   ports:
+  #     - "8000:8000"
+  #   depends_on:
+  #     - db
+  #     - seafile
+  #   networks:
+  #     - hack-network-db
+  #     - hack-network-web
 
   web:
     build:
       context: ./web
-      dockerfile: ./Dockerfile.dev
+      dockerfile: ./Dockerfile
     container_name: hack_web
     ports:
       - "3000:3000"
-    depends_on:
-      - api
+    # depends_on:
+      # - api
     volumes:
       - type: bind
         source: web
@@ -68,6 +69,7 @@ networks:
   hack-network-web:
     driver: bridge
   seafile-net:
+
 
 volumes:
   mongovolume:
