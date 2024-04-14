@@ -27,21 +27,73 @@ If you are working on a project that involves:
 
 then you should definitely use Git.
 
-## How does Git work?
-Git works by creating a **repository** that contains all the files and folders in your project. You can think of a repository as a folder that contains all the versions of your code. When you make changes to your code, Git keeps track of those changes and saves them in the repository. You can then go back to any version of your code at any time.
+## Getting started
+### Installing Git
+Frist, you ned to have Git installed on your computer.  
+<Tabs items={['Windows', 'Linux', 'Macos']}>
+    <Tabs.Tab>       
+            If you already have [Chocolately package manager](https://chocolatey.org/) installed, you can install Git by running the following command in your terminal:
+            ```bash copy
+            choco install git
+            ```
+            If you do not have Chocolately, you can still install Git by downloading the installer from the [official Git website](https://git-scm.com/). Run the installer and follow the instructions in the installer.
+    </Tabs.Tab>
 
-### Repository
-<Tabs items={['Remote', 'local']}>
-<Tabs.Tab>
+    <Tabs.Tab> 
+        Some Linux distributions come with Git pre-installed. You can check if Git is installed on your system by running the following command in your terminal:
+        ```bash copy
+        git --version
+        ```
+        If Git is not installed, you can install it using your [package manager](https://en.wikipedia.org/wiki/List_of_software_package_management_systems#Linux). For example, on Ubuntu, you can install Git by running the following command in your terminal:
+        ```bash copy
+        sudo apt-get install git
+        ```
+    </Tabs.Tab>
 
-A **local repository** is a repository that is stored on your computer. You can create a local repository by running the `git init` command in your project folder. This will create a hidden folder called `.git` that contains all the information about your repository.
+    <Tabs.Tab> 
+        There are several ways to install Git on macOS. The easiest is probably to install the Xcode Command Line Tools. On Mavericks (10.9) or above you can do this simply by trying to run git from the Terminal the very first time.
+        ```bash copy
+        git --version
+        ```
+        If you don't have it installed already, it will prompt you to install it.
 
-</Tabs.Tab>
+        Another easy way to install Git is by installing [Homebrew](https://brew.sh/) and then running the following command in your terminal:
+        ```bash copy
+        brew install git
+        ```
+    </Tabs.Tab>
 
-<Tabs.Tab>
+</Tabs>
 
-A **remote repository** is a repository that is stored on a server. You can create a remote repository on platforms like GitHub, GitLab, or Bitbucket. You can then push your changes from your local repository to the remote repository, and pull changes from the remote repository to your local repository.
+To verify that git is installed, you can run 
+``
+git --version
+``
+in your terminal and you should see the version of Git that is installed on your system.
 
+
+
+### Your first repository
+Git works by creating a **repository** (aka repo) that contains all the files and folders in your project. You can think of a repository as a folder that contains all the versions of your code. When you make changes to your code, Git keeps track of those changes and saves them in the repository. You can then go back to any version of your code at any time.
+
+
+You can either create a new repository or clone an existing repository.
+<Tabs items={['Clone an existing repo', 'Create from scratch']}>
+    <Tabs.Tab>
+
+    ```bash copy
+    git clone <repository-url>
+    ```
+
+    </Tabs.Tab>
+
+    <Tabs.Tab>
+
+    ```bash copy {3}
+    mkdir my-project
+    cd my-project
+    git init
+    ```
 </Tabs.Tab>
 </Tabs>
 
