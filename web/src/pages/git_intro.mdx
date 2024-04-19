@@ -10,7 +10,30 @@ What does that mean, you ask? Well, it means that Git helps you keep track of ch
 
 
 Here's a two-minute video that explains what this means:
-<iframe width="560" height="315" src="https://www.youtube.com/embed/2ReR1YJrNOM?si=HnDCSH-kbLqFUw-t" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+{ /* <iframe width="560" height="315" src="https://www.youtube.com/embed/2ReR1YJrNOM?si=HnDCSH-kbLqFUw-t" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> */}
+
+<div style={{
+      position: 'relative',
+      overflow: 'hidden',
+      width: '98%',
+      paddingTop: '56.25%' /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+    }}>
+  <iframe
+        style={{
+          position: 'absolute',
+          top: '0',
+          left: '0',
+          width: '100%',
+          height: '100%'
+        }}
+        src="https://www.youtube.com/embed/2ReR1YJrNOM?si=HnDCSH-kbLqFUw-t"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+</div>
 
 ## Why use Git?
 If you are working on a project that involves:
@@ -21,8 +44,6 @@ If you are working on a project that involves:
 - being able to go back to a previous version of your code,
 - being able to work on your code from different devices,
 - working offline and syncing your changes later,
-
-
 - or just being able to sleep at night knowing that your code is safe and sound,
 
 then you should definitely use Git.
@@ -84,7 +105,24 @@ You can either create a new repository or clone an existing repository.
     ```bash copy
     git clone <repository-url>
     ```
+    You can get `repository-url` from the repository you want to clone. This is often shown on the repository's page on the platform where the repository is hosted (e.g. GitHub, GitLab, Bitbucket).
 
+    Here's an example of where you can find the repository URL on GitHub:
+    { /* ![GitHub repository URL](https://docs.github.com/assets/images/help/repository/https-url-clone-cli.png) */}
+
+    <img src="https://docs.github.com/assets/images/help/repository/https-url-clone-cli.png" alt="GitHub repository URL" style={{ width :'98%', maxWidth: '500px' }} />   
+
+    You'll notice that there are more than one way to clone a repository. You can use the `https` URL or the `ssh` URL. The `https` URL is easier to use, but the `ssh` URL is more secure and doesn't require you to enter your username and password every time you push changes to the repository. If you're not sure which one to use, you can use the `https` URL.
+    <details>
+    <summary>Intrested in learning more about the difference between `https` and `ssh` URLs? </summary>
+    Check out this [GitHub article](https://docs.github.com/en/github/using-git/which-remote-url-should-i-use).
+    </details>
+    
+    <details>
+    <summary>Did you notice that there is a third option called "GitHub CLI"? </summary>
+    This is a command-line tool that allows you to interact with _**GitHub**_ from the command line. You can learn more about it [here](https://cli.github.com/).
+    </details>
+    
     </Tabs.Tab>
 
     <Tabs.Tab>
