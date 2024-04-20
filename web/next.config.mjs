@@ -5,7 +5,7 @@ import nextra from 'nextra';
 
 const nextConfig = {
     // Configure `pageExtensions` to include MDX files
-    pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
+    pageExtensions: ['js', 'jsx', 'ts', 'tsx'],
     output: 'standalone'
     // Optionally, add any other Next.js config below
 };
@@ -16,7 +16,7 @@ const withNextra = nextra({
     themeConfig: './theme.config.jsx'
 })
 
-export default withNextra( nextConfig )
+export default withNextra(nextConfig)
 
 // export default withMDX(nextConfig)
 

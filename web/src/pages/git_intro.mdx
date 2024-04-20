@@ -15,7 +15,7 @@ Here's a two-minute video that explains what this means:
 <div style={{
       position: 'relative',
       overflow: 'hidden',
-      width: '98%',
+      width: '75%',
       paddingTop: '56.25%' /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
     }}>
   <iframe
@@ -126,18 +126,67 @@ You can either create a new repository or clone an existing repository.
     </Tabs.Tab>
 
     <Tabs.Tab>
+    If you want to create a new repository from scratch, then you can use `git init` to do so. Let's create a new repository called `my-project` and initialize it with Git.
 
     ```bash copy {3}
     mkdir my-project
     cd my-project
     git init
     ```
+
+    The `init` command initializes a new Git repository in the current directory. This creates a hidden folder called `.git` that contains all the information Git needs to keep track of changes in your code.
+
+    When you use `git init`, you initailize a repository on your local machine in the same folder where you run the command. This could be useful if you want to start a new repository that is not connected to any remote repository or if you already have a project on your machine that you want to start tracking with Git.
+
+    If you want to connect your local repository to a remote repository, you can use the `git remote add` command. This command adds a remote repository to your local repository so that you can push and pull changes to and from the remote repository.
+
+    ```bash copy
+    git remote add origin <repository-url>
+    ```
+
+    In this case, `origin` is what you decide to call this remote repository. You can use any name you want, you can have multiple remote repositories connected to your local repository. The `repository-url` is the URL of the remote repository that you want to connect to. For exmaple, you can have something like this:
+
+    ```bash
+    git remote add my-remote-repo-1 <repository-url-1>
+    git remote add my-remote-repo-2 <repository-url-2>
+    ....
+    git remote add my-remote-repo-n <repository-url-n>
+    ```
+    <details>
+    <summary>Not sure why you would want to do this? </summary>
+    Check out this [StackOverflow answer](https://stackoverflow.com/questions/9529497/what-is-origin-in-git) for more information.
+    </details>
+
+    To view the remote repositories that are connected to your local repository, you can use the `git remote -v` command.
+
+    ```bash copy
+    git remote -v
+    ```
 </Tabs.Tab>
 </Tabs>
+
+
+### But How do I create a remote repository?
+If you want to create a remote repository, you can use a platform like GitHub, GitLab, or Bitbucket. These platforms allow you to create a remote repository and then connect your local repository to the remote repository.
+
+Here's how you can create a new repository on GitHub:
+{/* ![GitHub repository creation](https://docs.github.com/assets/cb-34248/mw-1440/images/help/repository/repo-create-global-nav-update.webp) */}
+    <img src="https://docs.github.com/assets/cb-34248/mw-1440/images/help/repository/repo-create-global-nav-update.webp" alt="GitHub repository URL" style={{ width :'98%', maxWidth: '500px' }} />  
+1. Go to [GitHub](https://github.com) and log in to your account. Create a new account if you don't have one.
+2. Click on the `+` icon in the top right corner and select `New repository`.
+3. Enter a name for your repository, a description (optional), and choose whether the repository should be public or private.
+4. Click on the `Create repository` button.
+
+You now have a new repository on GitHub that you can clone it or connect your local repository to it.
+
+### Adding changes
+
+### Branches
+
 
 ## ToDo
 - https://www.youtube.com/watch?v=hwP7WQkmECE
 2 min - git init - git add - git commit - branches (very brief)
 - https://www.youtube.com/watch?v=IHaTbJPdB-s
 20 min  - general overview of git with tutorial
-
+- git documentation: https://git-scm.com/doc
