@@ -15,7 +15,8 @@ Here's a two-minute video that explains what this means:
 <div style={{
       position: 'relative',
       overflow: 'hidden',
-      width: '75%',
+      width: '98%',
+      maxWidth: '640px',
       paddingTop: '56.25%' /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
     }}>
   <iframe
@@ -177,11 +178,111 @@ Here's how you can create a new repository on GitHub:
 3. Enter a name for your repository, a description (optional), and choose whether the repository should be public or private.
 4. Click on the `Create repository` button.
 
-You now have a new repository on GitHub that you can clone it or connect your local repository to it.
+You now have a new repository on GitHub that you can clone or connect your local repository to it.
 
-### Adding changes
+### Staging changes
+Now that you have a repository set up, you can start making changes like adding/deleting files or modifying existing files. Once you've made some changes, you can use the `git add` command to add those changes to the **staging area**. The staging area is where you prepare your changes before you commit them to the repository.
+
+```bash
+git add <file1> <file2> <...>
+```
+
+If you want to add all the changes in your working directory to the staging area, you can use the `.` (dot) symbol.
+
+```bash copy
+git add .
+```
+
+you can also use regular expressions to add files to the staging area. For example, if you want to add all the `.md` files in your working directory to the staging area, you can use the following command:
+
+```bash copy
+git add *.md
+```
+
+<details>
+<summary>What is the difference between the working directory, the staging area, and the repository?</summary>
+- The **working directory** is where you make changes to your code. This is just a regular folder on your computer.
+- The **staging area** is where you prepare your changes before you _'commit'_ them to the repository. When you add changes to the staging area, you are telling Git that you want to save these changes in the next commit. Maybe you want to commit some changes but not others, or maybe you want to commit all the changes at once. The staging area allows you to do this.
+- The **repository** is where all the versions of your code are stored. When you commit your changes, Git takes the changes from the staging area and saves them in the repository.
+</details>
+
+### Committing changes
+Once you've added your changes to the staging area, you can use the `git commit` command to commit those changes to the repository.
+
+```bash copy
+git commit -m "Your commit message here"
+```
+
+The `-m` flag is used to add a message to your commit. This message should be a short description of the changes you made in this commit. It's a good idea to write meaningful commit messages so that future you and your team members can understand what changes were made in each commit.
+
+> Here are some exmaples of good and bad commit messages:\
+> 👍 `added introduction chapter to the book`, `fixed diemntions of video iframe on small screens`👍\
+> 👎 `fixed stuff`, `updated code`, `changes`, `I'm tired and just want to go home` 👎
+
+<details>
+<summary> Now I know how to stage and commit changes. But what is a commit? </summary>
+A commit is a snapshot of your code at a specific point in time. When you commit your changes, Git takes a snapshot of your code and saves it in the repository. This allows you to go back to this snapshot at any time in the future. You can think of a commit as a save point in a video game. You can save your progress at any time and then go back to that save point if you need to.
+
+Git only saves the changes you've made in a commit, not the entire codebase. This makes commits very efficient and allows you to save many different versions of your code without taking up a lot of space. It also allows you to see who made what changes and when, which is very useful when working on a project with multiple people.
+
+In case something goes wrong, you can always **revert** the changes made in a commit or **reset** to a previous commit where things were working fine (see [`git revert`](https://git-scm.com/docs/git-revert) & [`git reset`](https://git-scm.com/docs/git-reset)).
+</details>
+
+To view the commit history of your repository, you can use the `git log` command.
+
+```bash copy
+git log
+```
+
 
 ### Branches
+<div style={{ padding: '1em', color: 'black', background: '#ffcccc', borderRadius: '5px', border: '2px solid red', fontSize: '1.2em' }}>
+
+Todo: should the branches section come after commiting or before staging?
+Rationale: 
+- Before committing: users will alrady know about branches and they can make test commits on new branches, make some commits on a branch then learn how to merge. This is a better workflow for those who already know how to do things.
+- After committing: after learning about repos, it might be better to already show them how to add and track changes. then introduce a new concept which is branching instead of delaying the hands-on part and just learn about another concept.  
+</div>
+
+
+
+Branches are a powerful feature of Git that allow you to work on different features of your project at the same time without affecting the main codebase. When you create a new branch, you create a copy of the main codebase that you can work on independently. This allows you to experiment with new features, fix bugs, or make changes without affecting the main codebase.
+
+
+<div style={{ backgroundColor: 'rgba(128, 128, 128, 0.1)', width: "98%", height: "auto", marginLeft: "auto", marginRight: "auto" }}>
+  <img src="https://wac-cdn.atlassian.com/dam/jcr:a905ddfd-973a-452a-a4ae-f1dd65430027/01%20Git%20branch.svg?cdnVersion=1568" alt="Git branches" />
+</div>
+
+For example, let's say you're working on a project and you want to add a new feature. You can create a new branch and work on this feature in this branch. Once you're done with the feature, you can merge the changes back into the main codebase. Other team members can also create branches and work on different features at the same time. This allows you to work on multiple features in parallel and only merge the changes back into the main codebase when they are ready and tested.
+
+There are many ways to create and manage branches in Git. Here are some common commands that you can use to work with branches:
+
+- `git branch`: This command lists all the branches in your repository. The branch with the `*` symbol next to it is the branch you are currently on.
+- `git branch <branch-name>`: This command creates a new branch with the name `<branch-name>`.
+
+- `git checkout <branch-name>`: This command switches to the branch with the name `<branch-name>`. You can also create a new branch and switch to it in one command by using the `-b` flag.
+
+- `git switch <branch-name>`: This command switches to the branch with the name `<branch-name>`. You can also create a new branch and switch to it in one command by using the `-c` flag.
+
+simply use any of them to create a new branch or switch to an existing branch.
+
+### Syncing local and remote repositories
+Your local repo is **not** automatically synced with the remote repository. which means that the changes you make in your local repository are not automatically reflected in the remote repository. Same goes for the changes made in the remote repository, they are not 
+automatically reflected in your local repository.
+
+There are two main commands that you can use to sync your local and remote branches: `git push` and `git pull`.
+
+>  `git push`: local → remote\
+>  `git pull`: remote → local
+
+When you push changes to the remote repository, you are sending the changes you made in your local repository to the remote repository. This allows other team members to see the changes you made and work on them. When you pull changes from the remote repository, you are getting the changes made by other team members and syncing them with your local repository. This allows you to see the changes made by other team members and work on them.
+
+<details>
+<summary> Got an error when pushing to an untracked branch? </summary>
+Continue here...
+</details>
+
+### Merging branches
 
 
 ## ToDo
@@ -190,3 +291,19 @@ You now have a new repository on GitHub that you can clone it or connect your lo
 - https://www.youtube.com/watch?v=IHaTbJPdB-s
 20 min  - general overview of git with tutorial
 - git documentation: https://git-scm.com/doc
+- great image for git workflow: https://www.atlassian.com/git/tutorials/comparing-workflows
+- https://www.youtube.com/watch?v=HVsySz-h9r4
+- https://www.youtube.com/watch?v=USjZcfj8yxE
+- https://www.youtube.com/watch?v=ZDR433b0HJY
+- https://www.youtube.com/watch?v=8JJ101D3knE
+- great image for different areas of git: https://i.stack.imgur.com/WwSHt.jpg
+
+
+<div style={{ filter: 'hue-rotate(180deg) invert(1)' }}>
+    <img src="https://i.stack.imgur.com/WwSHt.jpg" alt="Image" width="300" />
+</div>
+
+
+<div class="invert" >
+    <img src="https://i.stack.imgur.com/WwSHt.jpg" alt="Image" width="300" />
+</div>
