@@ -1,4 +1,5 @@
 import { Tabs } from 'nextra/components'
+import { LightImage } from './components/DarkImage'
 
 
 # Introduction to Git
@@ -10,13 +11,14 @@ What does that mean, you ask? Well, it means that Git helps you keep track of ch
 
 
 Here's a two-minute video that explains what this means:
-{ /* <iframe width="560" height="315" src="https://www.youtube.com/embed/2ReR1YJrNOM?si=HnDCSH-kbLqFUw-t" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> */}
 
 <div style={{
       position: 'relative',
       overflow: 'hidden',
       width: '98%',
-      paddingTop: '56.25%' /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+      maxWidth: '640px',
+      paddingTop: '56.25%', /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+      margin: "auto"
     }}>
   <iframe
         style={{
@@ -108,9 +110,9 @@ You can either create a new repository or clone an existing repository.
     You can get `repository-url` from the repository you want to clone. This is often shown on the repository's page on the platform where the repository is hosted (e.g. GitHub, GitLab, Bitbucket).
 
     Here's an example of where you can find the repository URL on GitHub:
-    { /* ![GitHub repository URL](https://docs.github.com/assets/images/help/repository/https-url-clone-cli.png) */}
-
-    <img src="https://docs.github.com/assets/images/help/repository/https-url-clone-cli.png" alt="GitHub repository URL" style={{ width :'98%', maxWidth: '500px' }} />   
+    <div style={{ width :'98%', maxWidth: '500px',  margin: "auto" }}>
+    <LightImage src="https://docs.github.com/assets/images/help/repository/https-url-clone-cli.png" alt="GitHub repository URL"  />   
+    </div>
 
     You'll notice that there are more than one way to clone a repository. You can use the `https` URL or the `ssh` URL. The `https` URL is easier to use, but the `ssh` URL is more secure and doesn't require you to enter your username and password every time you push changes to the repository. If you're not sure which one to use, you can use the `https` URL.
     <details>
@@ -126,18 +128,259 @@ You can either create a new repository or clone an existing repository.
     </Tabs.Tab>
 
     <Tabs.Tab>
+    If you want to create a new repository from scratch, then you can use `git init` to do so. Let's create a new repository called `my-project` and initialize it with Git.
 
     ```bash copy {3}
     mkdir my-project
     cd my-project
     git init
     ```
+
+    The `init` command initializes a new Git repository in the current directory. This creates a hidden folder called `.git` that contains all the information Git needs to keep track of changes in your code.
+
+    When you use `git init`, you initailize a repository on your local machine in the same folder where you run the command. This could be useful if you want to start a new repository that is not connected to any remote repository or if you already have a project on your machine that you want to start tracking with Git.
+
+    If you want to connect your local repository to a remote repository, you can use the `git remote add` command. This command adds a remote repository to your local repository so that you can push and pull changes to and from the remote repository.
+
+    ```bash copy
+    git remote add origin <repository-url>
+    ```
+
+    In this case, `origin` is what you decide to call this remote repository. You can use any name you want, you can have multiple remote repositories connected to your local repository. The `repository-url` is the URL of the remote repository that you want to connect to. For exmaple, you can have something like this:
+
+    ```bash
+    git remote add my-remote-repo-1 <repository-url-1>
+    git remote add my-remote-repo-2 <repository-url-2>
+    ....
+    git remote add my-remote-repo-n <repository-url-n>
+    ```
+    <details>
+    <summary>Not sure why you would want to do this? </summary>
+    Check out this [StackOverflow answer](https://stackoverflow.com/questions/9529497/what-is-origin-in-git) for more information.
+    </details>
+
+    To view the remote repositories that are connected to your local repository, you can use the `git remote -v` command.
+
+    ```bash copy
+    git remote -v
+    ```
 </Tabs.Tab>
 </Tabs>
 
-## ToDo
-- https://www.youtube.com/watch?v=hwP7WQkmECE
-2 min - git init - git add - git commit - branches (very brief)
-- https://www.youtube.com/watch?v=IHaTbJPdB-s
-20 min  - general overview of git with tutorial
 
+### But How do I create a remote repository?
+If you want to create a remote repository, you can use a platform like GitHub, GitLab, or Bitbucket. These platforms allow you to create a remote repository and then connect your local repository to the remote repository.
+
+Here's how you can create a new repository on GitHub:
+    <div style={{ width :'98%', maxWidth: '500px',  margin: "auto" }} >
+      <LightImage src="https://docs.github.com/assets/cb-34248/mw-1440/images/help/repository/repo-create-global-nav-update.webp" alt="GitHub repository URL" />  
+    </div>
+1. Go to [GitHub](https://github.com) and log in to your account. Create a new account if you don't have one.
+2. Click on the `+` icon in the top right corner and select `New repository`.
+3. Enter a name for your repository, a description (optional), and choose whether the repository should be public or private.
+4. Click on the `Create repository` button.
+
+You now have a new repository on GitHub that you can clone or connect your local repository to it.
+
+### Staging changes
+Now that you have a repository set up, you can start making changes like adding/deleting files or modifying existing files. Once you've made some changes, you can use the `git add` command to add those changes to the **staging area**. The staging area is where you prepare your changes before you commit them to the repository.
+
+```bash
+git add <file1> <file2> <...>
+```
+
+If you want to add all the changes in your working directory to the staging area, you can use the `.` (dot) symbol.
+
+```bash copy
+git add .
+```
+
+you can also use regular expressions to add files to the staging area. For example, if you want to add all the `.md` files in your working directory to the staging area, you can use the following command:
+
+```bash copy
+git add *.md
+```
+
+<details>
+<summary>What is the difference between the working directory, the staging area, and the repository?</summary>
+- The **working directory** is where you make changes to your code. This is just a regular folder on your computer.
+- The **staging area** is where you prepare your changes before you _'commit'_ them to the repository. When you add changes to the staging area, you are telling Git that you want to save these changes in the next commit. Maybe you want to commit some changes but not others, or maybe you want to commit all the changes at once. The staging area allows you to do this.
+- The **repository** is where all the versions of your code are stored. When you commit your changes, Git takes the changes from the staging area and saves them in the repository.
+</details>
+
+### Committing changes
+Once you've added your changes to the staging area, you can use the `git commit` command to commit those changes to the repository.
+
+```bash copy
+git commit -m "Your commit message here"
+```
+
+The `-m` flag is used to add a message to your commit. This message should be a short description of the changes you made in this commit. It's a good idea to write meaningful commit messages so that future you and your team members can understand what changes were made in each commit.
+
+> Here are some exmaples of good and bad commit messages:\
+> 👍 `added introduction chapter to the book`, `fixed diemntions of video iframe on small screens`👍\
+> 👎 `fixed stuff`, `updated code`, `changes`, `I'm tired and just want to go home` 👎
+
+<details>
+<summary> Now I know how to stage and commit changes. But what is a commit? </summary>
+A commit is a snapshot of your code at a specific point in time. When you commit your changes, Git takes a snapshot of your code and saves it in the repository. This allows you to go back to this snapshot at any time in the future. You can think of a commit as a save point in a video game. You can save your progress at any time and then go back to that save point if you need to.
+
+Git only saves the changes you've made in a commit, not the entire codebase. This makes commits very efficient and allows you to save many different versions of your code without taking up a lot of space. It also allows you to see who made what changes and when, which is very useful when working on a project with multiple people.
+
+In case something goes wrong, you can always **revert** the changes made in a commit or **reset** to a previous commit where things were working fine (see [`git revert`](https://git-scm.com/docs/git-revert) & [`git reset`](https://git-scm.com/docs/git-reset)).
+</details>
+
+To view the commit history of your repository, you can use the `git log` command.
+
+```bash copy
+git log
+```
+
+
+### Branches
+<div style={{ margin: "auto", padding: '1em', color: 'black', background: '#ffcccc', borderRadius: '5px', border: '2px solid red', fontSize: '1.2em' }}>
+
+Todo: should the branches section come after commiting or before staging?
+Rationale: 
+- Before committing: users will alrady know about branches and they can make test commits on new branches, make some commits on a branch then learn how to merge. This is a better workflow for those who already know how to do things.
+- After committing: after learning about repos, it might be better to already show them how to add and track changes. then introduce a new concept which is branching instead of delaying the hands-on part and just learn about another concept.  
+</div>
+
+
+
+Branches are a powerful feature of Git that allow you to work on different features of your project at the same time without affecting the main codebase. When you create a new branch, you create a copy of the main codebase that you can work on independently. This allows you to experiment with new features, fix bugs, or make changes without affecting the main codebase.
+
+
+<div style={{ backgroundColor: 'rgba(128, 128, 128, 0.1)', width: "98%", height: "auto", marginLeft: "auto", marginRight: "auto" }}>
+  <LightImage src="https://wac-cdn.atlassian.com/dam/jcr:a905ddfd-973a-452a-a4ae-f1dd65430027/01%20Git%20branch.svg?cdnVersion=1568" alt="Git branches" />
+</div>
+
+For example, let's say you're working on a project and you want to add a new feature. You can create a new branch and work on this feature in this branch. Once you're done with the feature, you can merge the changes back into the main codebase. Other team members can also create branches and work on different features at the same time. This allows you to work on multiple features in parallel and only merge the changes back into the main codebase when they are ready and tested.
+
+There are many ways to create and manage branches in Git. Here are some common commands that you can use to work with branches:
+
+- `git branch`: This command lists all the branches in your repository. The branch with the `*` symbol next to it is the branch you are currently on.
+- `git branch <branch-name>`: This command creates a new branch with the name `<branch-name>`.
+
+- `git checkout <branch-name>`: This command switches to the branch with the name `<branch-name>`. You can also create a new branch and switch to it in one command by using the `-b` flag.
+
+- `git switch <branch-name>`: This command switches to the branch with the name `<branch-name>`. You can also create a new branch and switch to it in one command by using the `-c` flag.
+
+simply use any of them to create a new branch or switch to an existing branch.
+
+### Syncing local and remote repositories
+Your local repo is **not** automatically synced with the remote repository. which means that the changes you make in your local repository are not automatically reflected in the remote repository. Same goes for the changes made in the remote repository, they are not 
+automatically reflected in your local repository.
+
+There are two main commands that you can use to sync your local and remote branches: `git push` and `git pull`.
+
+>  `git push`: local → remote\
+>  `git pull`: remote → local
+
+When you push changes to the remote repository, you are sending the changes you made in your local repository to the remote repository. This allows other team members to see the changes you made and work on them. When you pull changes from the remote repository, you are getting the changes made by other team members and syncing them with your local repository. This allows you to see the changes made by other team members and work on them.
+
+<details>
+<summary> Got an error when pushing to an untracked branch? </summary>
+Depending on which path you took to create a new branch, you might get an error when you try to push changes to the remote repository. This is because the remote repository does not know about the new branch you created. It is important to understand that the remote repository does not automatically create a new branch when you create a new branch in your local repository. You have to tell the remote repository about the new branch by using the `--set-upstream` flag when you push changes to the remote repository for the first time. This is not just to annoy you with extra commands, it is a security feature that prevents you from accidentally pushing changes to the wrong branch.
+
+To fix this error, you can use the following command the first time you push changes to a new branch:
+```bash copy
+git push --set-upstream origin <branch-name>
+```
+</details>
+
+### Merging branches
+Perhaps the main reason why branches are so powerful is that they allow you to work on different features of your project at the same time without affecting the main codebase. But what's the point of working on different features if you can't bring them together in the end?
+
+This is where merging comes in. Merging is the process of combining the changes from one branch into another branch. When you merge a branch into another branch, you are taking the changes made in the first branch and applying them to the second branch. This allows you to bring together the changes made in different branches and create a new version of your code that includes all the changes.
+
+You can either merge branches locally or remotely. Merging branches locally means that you merge the changes in your local repository, while merging branches remotely means that you merge the changes in the remote repository. In both cases, it would be a good point to sync your local and remote repositories after the merge.
+
+<Tabs items={['Merge locally', 'Merge remotely']}>
+    <Tabs.Tab>
+
+There are two main ways to merge branches in Git: `git merge` and `git rebase`. For now, we'll focus on `git merge`since it is the simpler of the two. If you are intrested in learning more about `git rebase`, here's a [great article](https://www.atlassian.com/git/tutorials/rewriting-history/git-rebase).
+
+
+> Even though the using both `git merge` and `git rebase` can be configured for the remote repository as well, is is mostly simplified with a graphical interface like GitHub or GitLab. That's why it is more important to talk about them in the context of local repositories. Because that is where you will be using them the most.
+
+
+To merge a branch into another branch, you can use the `git merge` command. For example, if you want to merge the changes from the `feature-branch` into the `main` branch, you can use the following command:
+
+```bash copy {2}
+git checkout main         # switch to the branch you want to merge into
+git merge feature-branch  # merge the changes from feature-branch into main
+```
+
+In a prefect world, that would be all you need to do to merge two branches. But in the real world, you might run into conflicts when you try to merge two branches. A conflict occurs when Git is unable to automatically merge the changes from two branches. This can happen when two branches have made changes to the same part of a file, or when the changes made in one branch conflict with the changes made in another branch.
+
+When you run into a conflict, Git will tell you which files have conflicts and ask you to resolve them manually 😪. You can do this by opening the conflicted files in your code editor, resolving the conflicts, and then committing the changes. Once you've resolved all the conflicts, you can continue the merge by running `git merge --continue`.
+
+<details>
+<summary>If you prefer to use a specific code editor for resolving conflicts</summary>
+you can configure Git to use that editor. You can do this by setting the `merge.tool` configuration option in Git. For example, if you want to use Visual Studio Code as your merge tool, you can run the following command:
+  
+```bash copy
+git config --global merge.tool vscode # the global flag is used to set the configuration globally. You can also set it locally for a specific repository by omitting the global flag.
+```
+</details>  
+</Tabs.Tab>
+
+<Tabs.Tab>
+When you merge branches remotely, you make use of the graphical interface provided by the platform where the remote repository is hosted. For example, if you are using GitHub, you can create a **pull request** to merge branches remotely. A pull request is a request to merge the changes from one branch into another branch. It allows you to review the changes made in the branch before merging them, discuss the changes with your team members, and the ability to resolve conflicts before merging the changes.
+
+Here's how you can create a pull request on GitHub:
+1. Go to the repository where you want to create the pull request.
+2. Click on the `Pull requests` tab.
+3. Click on the `New pull request` button.
+4. Select the branches you want to merge from and to.
+5. Review the changes made in the branch and resolve any conflicts.
+6. Click on the `Create pull request` button.
+
+Once you've created the pull request, you can review the changes, discuss them with your team members, and resolve any conflicts. Once everything looks good, you can merge the changes into the target branch.
+
+**Remember** that when you merge the branches remotely, the local target branch is not automatically updated. You have to pull the changes from the remote repository to update your local repository.
+</Tabs.Tab>
+</Tabs>
+
+## Summary
+<div style={{ maxWidth:"640px", margin: "auto"}}>
+    <LightImage src="https://i.stack.imgur.com/WwSHt.jpg" alt="Image"  />
+</div>
+
+In this guide, we've covered the basics of Git and how you can use it to track changes in your codebase. We've learned how to create a new repository, add and commit changes, create and merge branches, and sync local and remote repositories. We fonund a nice image that shows the different areas of git and how they interact with each other by [nikkiandchris](http://nikkiandchris.io) that could help you remember most of the basic commands.
+
+
+You can also watch this 2-minute video that summarizes what we've covered in this guide:
+<div style={{
+      position: 'relative',
+      overflow: 'hidden',
+      width: '98%',
+      maxWidth: '640px',
+      paddingTop: '56.25%', /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+      margin: "auto"
+    }}>
+  <iframe
+        style={{
+          position: 'absolute',
+          top: '0',
+          left: '0',
+          width: '100%',
+          height: '100%'
+        }}
+        src="https://www.youtube.com/embed/hwP7WQkmECE?si=ImIRG5SXzGhJjvND"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+</div>
+
+## Further reading
+What we've covered in this guide is just the tip of the iceberg when it comes to Git. There are many more advanced features and commands that you can use to work with Git. But don't worry, you don't have to learn everything at once. What you learned in this guide is enough to get you started with Git and start using it in your projects. As you become more comfortable with Git, you can explore more advanced features and commands.
+Here are some resources that you can use to learn more about Git:
+- [Learn Git in 20 Minutes](https://www.youtube.com/watch?v=IHaTbJPdB-s) Goes over the same basic conepts but in a more visual way and in a bit more depth to explin the cencepts behind them.
+- [Git Documentation](https://git-scm.com/doc) The official Git documentation is a great resource for learning more about Git. It covers everything from the basics to advanced features and commands.
+- [Pro Git Book](https://git-scm.com/book/en/v2) This is a free book that covers everything you need to know about Git. It's a great resource for learning Git in depth.
+- [Getting Git right](https://www.atlassian.com/git) Atlassian has a great collection of resources for learning Git. They cover everything from the basics to advanced topics with easy to understand guides and tutorials.

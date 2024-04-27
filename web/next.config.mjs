@@ -16,7 +16,7 @@ const withNextra = nextra({
     themeConfig: './theme.config.jsx'
 })
 
-export default withNextra( nextConfig )
+export default withNextra(nextConfig)
 
 // export default withMDX(nextConfig)
 
