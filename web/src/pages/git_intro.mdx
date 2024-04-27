@@ -1,4 +1,5 @@
 import { Tabs } from 'nextra/components'
+import { LightImage } from './components/DarkImage'
 
 
 # Introduction to Git
@@ -109,7 +110,9 @@ You can either create a new repository or clone an existing repository.
     You can get `repository-url` from the repository you want to clone. This is often shown on the repository's page on the platform where the repository is hosted (e.g. GitHub, GitLab, Bitbucket).
 
     Here's an example of where you can find the repository URL on GitHub:
-    <img src="https://docs.github.com/assets/images/help/repository/https-url-clone-cli.png" alt="GitHub repository URL" style={{ width :'98%', maxWidth: '500px',  margin: "auto" }} />   
+    <div style={{ width :'98%', maxWidth: '500px',  margin: "auto" }}>
+    <LightImage src="https://docs.github.com/assets/images/help/repository/https-url-clone-cli.png" alt="GitHub repository URL"  />   
+    </div>
 
     You'll notice that there are more than one way to clone a repository. You can use the `https` URL or the `ssh` URL. The `https` URL is easier to use, but the `ssh` URL is more secure and doesn't require you to enter your username and password every time you push changes to the repository. If you're not sure which one to use, you can use the `https` URL.
     <details>
@@ -169,7 +172,9 @@ You can either create a new repository or clone an existing repository.
 If you want to create a remote repository, you can use a platform like GitHub, GitLab, or Bitbucket. These platforms allow you to create a remote repository and then connect your local repository to the remote repository.
 
 Here's how you can create a new repository on GitHub:
-    <img src="https://docs.github.com/assets/cb-34248/mw-1440/images/help/repository/repo-create-global-nav-update.webp" alt="GitHub repository URL" style={{ width :'98%', maxWidth: '500px',  margin: "auto" }} />  
+    <div style={{ width :'98%', maxWidth: '500px',  margin: "auto" }} >
+      <LightImage src="https://docs.github.com/assets/cb-34248/mw-1440/images/help/repository/repo-create-global-nav-update.webp" alt="GitHub repository URL" />  
+    </div>
 1. Go to [GitHub](https://github.com) and log in to your account. Create a new account if you don't have one.
 2. Click on the `+` icon in the top right corner and select `New repository`.
 3. Enter a name for your repository, a description (optional), and choose whether the repository should be public or private.
@@ -247,7 +252,7 @@ Branches are a powerful feature of Git that allow you to work on different featu
 
 
 <div style={{ backgroundColor: 'rgba(128, 128, 128, 0.1)', width: "98%", height: "auto", marginLeft: "auto", marginRight: "auto" }}>
-  <img src="https://wac-cdn.atlassian.com/dam/jcr:a905ddfd-973a-452a-a4ae-f1dd65430027/01%20Git%20branch.svg?cdnVersion=1568" alt="Git branches" />
+  <LightImage src="https://wac-cdn.atlassian.com/dam/jcr:a905ddfd-973a-452a-a4ae-f1dd65430027/01%20Git%20branch.svg?cdnVersion=1568" alt="Git branches" />
 </div>
 
 For example, let's say you're working on a project and you want to add a new feature. You can create a new branch and work on this feature in this branch. Once you're done with the feature, you can merge the changes back into the main codebase. Other team members can also create branches and work on different features at the same time. This allows you to work on multiple features in parallel and only merge the changes back into the main codebase when they are ready and tested.
@@ -339,8 +344,8 @@ Once you've created the pull request, you can review the changes, discuss them w
 </Tabs>
 
 ## Summary
-<div style={{ maxWidth:"640px", margin: "auto",filter: 'hue-rotate(180deg) invert(1)'  }}>
-    <img src="https://i.stack.imgur.com/WwSHt.jpg" alt="Image"  />
+<div style={{ maxWidth:"640px", margin: "auto"}}>
+    <LightImage src="https://i.stack.imgur.com/WwSHt.jpg" alt="Image"  />
 </div>
 
 In this guide, we've covered the basics of Git and how you can use it to track changes in your codebase. We've learned how to create a new repository, add and commit changes, create and merge branches, and sync local and remote repositories. We fonund a nice image that shows the different areas of git and how they interact with each other by [nikkiandchris](http://nikkiandchris.io) that could help you remember most of the basic commands.
