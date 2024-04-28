@@ -1,3 +1,60 @@
-# Introduction to Markdown
+import { LightImage } from './components/DarkImage'
+import MdBlock from './components/MdParser'
 
-**TBD**
+# Introduction to Markdown
+<LightImage src= "https://upload.wikimedia.org/wikipedia/commons/4/48/Markdown-mark.svg" alt="Markdown Logo" />
+
+## Waht is Markdown?
+Markdown is a lightweight markup language with plain-text-formatting syntax. Its design allows it to be converted to many output formats, the most common being HTML.
+
+Thus Markdown is a great way to style text on the web. You control the display of the document; formatting words as bold or italic, adding images, and creating lists are just a few of the things we can do with Markdown. Mostly, Markdown is just regular text with a few non-alphabetic characters thrown in, like # or *. The great thing about Markdown is that it is easy to learn and easy to read even in its raw form.
+
+There are many flavors and extentions for Markdown created by different companies and individuals. For exmaple, [Github Flavored Markdown (GFM)](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/about-writing-and-formatting-on-github) and [MDX](https://mdxjs.com/)  
+
+
+### What can markdown be used for?
+Markdown is used for many things, including, but not limited to:
+- Documentation
+- README files
+- Forum posts
+- Blog posts
+- Messages
+- And more!
+
+In this tutorial, we will have a look at the basics of Markdown and how to use it to style text on the web. We will only focus on the basic syntax of Markdown, and not on any specific flavor or extentions.
+
+### Brief history
+Markdown was created by John Gruber in 2004. It was created to be easy to read and write, and to be converted to HTML. and was mainly intended to be used to write for the web.
+
+## Basic Syntax
+ToDO: Continue here
+The basic syntax of Markdown is very simple. It includes the following elements:
+### Headers
+Headers are used to define the structure of your document. They are created by adding one or more # in front of the text. The number of # determines the level of the header. For example:
+<MdBlock text={`
+# H1
+## H2
+### H3
+#### H4
+##### H5
+###### H6
+`}/>
+### Bold
+### Italic
+### Lists
+### Links
+### Images
+### Code
+### Blockquotes
+### Horizontal Rule
+
+<MdBlock text = {`
+## H2
+
+There can be a lot of text here. Which can make the mdx document hard to read. How can I make this more readable?
+
+`}/>
+
+## ToDo
+- <href>https://daringfireball.net/projects/markdown/</href>
+- <href>https://en.wikipedia.org/wiki/Markdown</href>

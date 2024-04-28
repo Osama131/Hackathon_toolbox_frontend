@@ -1,6 +1,6 @@
 import React from 'react';
-// import styles from './darkImage.module.css';
-
+import Image from 'next/image';
+import '../../../src/app/globals.css';
 interface ImageProps {
     src: string;
     alt?: string;
@@ -8,7 +8,7 @@ interface ImageProps {
 
 export const LightImage: React.FC<ImageProps> = ({ src, alt }) => {
     return (
-        <div className="dark:filter hue-rotate-180 invert">
+        <div className="dark:hue-rotate-180 dark:invert">
             <img src={src} alt={alt} />
         </div>
     )
@@ -16,8 +16,8 @@ export const LightImage: React.FC<ImageProps> = ({ src, alt }) => {
 
 export const DarkImage: React.FC<ImageProps> = ({ src, alt }) => {
     return (
-        <div>
-            <img src={src} alt={alt} />
+        <div className="hue-rotate-180 invert">
+            <Image src={src} alt={alt} />
         </div>
     )
 };

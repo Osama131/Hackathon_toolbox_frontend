@@ -3,10 +3,9 @@ import type { Config } from "tailwindcss";
 const config: Config = {
   darkMode: 'media',
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/custom_components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx,md}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx,md}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx,md}",
   ],
   theme: {
     extend: {
@@ -15,10 +14,6 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
-      filter: {
-        'invert': 'invert(1)',
-        'hue-rotate': 'hue-rotate(180deg)'
-      }
     },
   },
   variants: {

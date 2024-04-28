@@ -1,9 +1,0 @@
-/* @import url("src/app/global.css"); */
-
-.darkMode {
-    filter: none;
-}
-
-.dark .darkMode {
-    filter: invert hue-rotate-180;
-}
