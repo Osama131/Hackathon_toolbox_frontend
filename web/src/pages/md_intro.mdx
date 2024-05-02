@@ -23,14 +23,16 @@ Markdown is used for many things, including, but not limited to:
 
 In this tutorial, we will have a look at the basics of Markdown and how to use it to style text on the web. We will only focus on the basic syntax of Markdown, and not on any specific flavor or extentions.
 
-### Brief history
+<details>
+<summary> Brief history</summary>
 Markdown was created by John Gruber in 2004. It was created to be easy to read and write, and to be converted to HTML. and was mainly intended to be used to write for the web.
+</details>
 
 ## Basic Syntax
-ToDO: Continue here
-The basic syntax of Markdown is very simple. It includes the following elements:
+The basic syntax of Markdown comprises only a few elemnts. We will show these elemnts and an exmaple of each of them. 
+
 ### Headers
-Headers are used to define the structure of your document. They are created by adding one or more # in front of the text. The number of # determines the level of the header. For example:
+Headers are specified using the `#` symbol. The number of `#`s specifies the level of the header. We can have up to 6 levels of heades in Mardown 
 <MdBlock text={`
 # H1
 ## H2
@@ -40,19 +42,163 @@ Headers are used to define the structure of your document. They are created by a
 ###### H6
 `}/>
 ### Bold
+To make text bold, it should be surrounded by **two** `*`s or **two** `_`s. 
+<MdBlock text={`
+This is **bold** text.
+
+And This is also __bold__ text.
+`}/> 
 ### Italic
+Italic text is surrounded by only one `*` or `_`.
+
+<MdBlock text={`
+This text is *italic* .
+
+And so is this _text_ .
+`}/>
+
+<details>
+<summary> Want to make some text both &nbsp;**bold**&nbsp; and &nbsp;*italic*? </summary>
+Simply use any combination of `*`s and `_`s. We don't recommend you to use `___` though as it doesn't always work with all parsers even though it should, in theory, work.
+<MdBlock text={`
+***This*** works,
+
+but also ___this___ works,
+
+and so does **_this_**, and _**this**_.
+
+Mayeb you already guessed that __*this*__ and *__this__* all work. 
+`}/>
+
+</details> 
+
 ### Lists
+#### Ordered
+Ordered lists are writtnen using when writing any number followed by a `.`. The first number you use will be the starting point of your ordered list. All other numbers that come after that do not have any effect as the list items will simply be incremented by 1 for every new item. 
+
+<MdBlock text={`
+# just use the same nubmer
+1. item
+1. item
+1. item
+
+# ordered starting from 2
+2. item
+3. item
+4. item
+
+### completely random
+5. item
+62. item
+2. item
+
+`}/>
+
+#### Unordered
+Unordered lists can use either `*`, `+`, or `-` as list markers. Use **two empty spaces** to indent the list items once, four spaces two indent twice and so on.
+We don't recommend that you mix different symbols for the same list **and same level** as this is parsed as seperate lists. 
+
+<MdBlock text={`
+* item with \`*\`
+* item with \`*\`
+  * indented item
+    * indented twice
+
++ item with \`+\`
++ item with \`+\`
+  + indented item \`+\`
+    + indented twice \`+\`
+
+- item with \`-\`
+  - indented \`-\`
+
++ fisrt level
++ first level
+  - second level
+    * third level
+
+`}/>
+### Line breaks
+Single line breaks that you have in your input are ignored by the parser. If you want to have a line break in the output, you can either use `\` or add two or more line breaks in your text. If you want to have more than one line break in your output(e.g., A few empty lines), then you have to use `\` for each one. 
+
+<MdBlock text={`
+There won't be a line break after this sentence.
+We are still on the first line.
+
+And now we are on a new line.\
+And a new one :)
+`}/>
+
 ### Links
+* You can just enclose your text between `<` and `>` and it will be shown as a link.
+* But if you want to display a different text, you hsould use this syntax `[Text to display](https://url.org)`
+* you can also use relative links: `[text to display](/relative)`
+
+<MdBlock text={`
+<https://https://colaps.team/>
+
+[Colaps](https://colaps.team/)
+
+[will try to navigate to non existing page on the current website relevant to current path](/link)
+`}/>
 ### Images
+Images are very close to links in markdown. But they have an extra `!` in front. The syntax for images are `![Alt text](/path/to/image)`.
+
+The "Alt text" is a short textual description of the the image.
+
+Here the path to the image can also be a url or a relative path.
+
+<MdBlock text={`
+![MD logo](https://upload.wikimedia.org/wikipedia/commons/4/48/Markdown-mark.svg)
+`}/>
+
 ### Code
+#### Inline code
+Inline code is displayed on the same line. It is added by surrounding your code by a backtick `` ` ``.
+<MdBlock text={`
+Here is an exmaple of \`inline\` code
+`}/>
+
+#### Code blocks
+You can also write code on a seperate line (or lines) by surrouding it by three backticks `` ``` ``.
+<MdBlock text={`
+\`\`\`
+git push
+git pull
+\`\`\`
+`}/>
+
 ### Blockquotes
+To add a block quote, simply add a `>` at the begining of the line. Multiple consequetive quoted lines are grouped toghether in a larger quote.
+
+You can also nest quotes by increasing the nubmer of `>`s. You can also optionally adda spaces between them.
+
+Keep in mind that you cannot go back to a lower level of a quote in the same block after a nested quote in basic MD as this would not be parsed properly. 
+<MdBlock text={`
+No quote
+> Quote block
+> some random text
+>> nested quote
+>>> nested nested
+>> Doesn't go back to the same level of two nested quotes!
+`}/>
 ### Horizontal Rule
+Horizontal rules help you seperate your text. To create a horizontal rule, use three or more asterisks (`***`), dashes (`---`), or underscores (`___`) on a line by themselves
+<MdBlock text={`
+***
+text
 
-<MdBlock text = {`
-## H2
+----
 
-There can be a lot of text here. Which can make the mdx document hard to read. How can I make this more readable?
+text
+___
+`}/>
 
+### Escape character
+To escape any Character in MD, prepend it with a `\`. To escape the backslash itself, use `\\`
+
+<MdBlock text={`
+This \\*text is not\\* italic, but *this* is.
 `}/>
 
 ## ToDo

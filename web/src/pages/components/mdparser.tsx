@@ -15,7 +15,7 @@ const MdBlock: React.FC<MdParserProps> = ({ text }) => {
     return (
         <div>
             <div>
-                <h2>Unparsed Text</h2>
+                <h2>Markdown</h2>
                 <pre>{text}</pre>
             </div>
             <div>
@@ -23,8 +23,8 @@ const MdBlock: React.FC<MdParserProps> = ({ text }) => {
                 <button onClick={toggleShowHtml}>
                     {showHtml ? 'Show Graphics' : 'Show HTML'}
                 </button>
-                {showHtml ? (
-                    <div dangerouslySetInnerHTML={{ __html: text }} />
+
+                {showHtml ? (<pre>  <Markdown>{text}</Markdown> </pre>
                 ) : (
                     <Markdown>{text}</Markdown>
                 )}
