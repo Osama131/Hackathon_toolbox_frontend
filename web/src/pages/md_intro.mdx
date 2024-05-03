@@ -4,12 +4,12 @@ import MdBlock from './components/MdParser'
 # Introduction to Markdown
 <LightImage src= "https://upload.wikimedia.org/wikipedia/commons/4/48/Markdown-mark.svg" alt="Markdown Logo" />
 
-## Waht is Markdown?
+## What is Markdown?
 Markdown is a lightweight markup language with plain-text-formatting syntax. Its design allows it to be converted to many output formats, the most common being HTML.
 
 Thus Markdown is a great way to style text on the web. You control the display of the document; formatting words as bold or italic, adding images, and creating lists are just a few of the things we can do with Markdown. Mostly, Markdown is just regular text with a few non-alphabetic characters thrown in, like # or *. The great thing about Markdown is that it is easy to learn and easy to read even in its raw form.
 
-There are many flavors and extentions for Markdown created by different companies and individuals. For exmaple, [Github Flavored Markdown (GFM)](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/about-writing-and-formatting-on-github) and [MDX](https://mdxjs.com/)  
+There are many flavors and extentions for Markdown created by different companies and individuals. For example, [Github Flavored Markdown (GFM)](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/about-writing-and-formatting-on-github) and [MDX](https://mdxjs.com/)  
 
 
 ### What can markdown be used for?
@@ -29,10 +29,10 @@ Markdown was created by John Gruber in 2004. It was created to be easy to read a
 </details>
 
 ## Basic Syntax
-The basic syntax of Markdown comprises only a few elemnts. We will show these elemnts and an exmaple of each of them. 
+The basic syntax of Markdown comprises only a few elements. We will show these elements and an example of each of them. 
 
 ### Headers
-Headers are specified using the `#` symbol. The number of `#`s specifies the level of the header. We can have up to 6 levels of heades in Mardown 
+Headers are specified using the `#` symbol. The number of `#`s specifies the level of the header. We can have up to 6 levels of headers in Markdown 
 <MdBlock text={`
 # H1
 ## H2
@@ -74,10 +74,10 @@ Mayeb you already guessed that __*this*__ and *__this__* all work.
 
 ### Lists
 #### Ordered
-Ordered lists are writtnen using when writing any number followed by a `.`. The first number you use will be the starting point of your ordered list. All other numbers that come after that do not have any effect as the list items will simply be incremented by 1 for every new item. 
+Ordered lists are written using when writing any number followed by a `.`. The first number you use will be the starting point of your ordered list. All other numbers that come after that do not have any effect as the list items will simply be incremented by 1 for every new item. 
 
 <MdBlock text={`
-# just use the same nubmer
+# just use the same number
 1. item
 1. item
 1. item
@@ -112,7 +112,7 @@ We don't recommend that you mix different symbols for the same list **and same l
 - item with \`-\`
   - indented \`-\`
 
-+ fisrt level
++ first level
 + first level
   - second level
     * third level
@@ -135,7 +135,7 @@ And a new one :)
 * you can also use relative links: `[text to display](/relative)`
 
 <MdBlock text={`
-<https://https://colaps.team/>
+<https://colaps.team/>
 
 [Colaps](https://colaps.team/)
 
@@ -156,7 +156,7 @@ Here the path to the image can also be a url or a relative path.
 #### Inline code
 Inline code is displayed on the same line. It is added by surrounding your code by a backtick `` ` ``.
 <MdBlock text={`
-Here is an exmaple of \`inline\` code
+Here is an example of \`inline\` code
 `}/>
 
 #### Code blocks
@@ -171,7 +171,7 @@ git pull
 ### Blockquotes
 To add a block quote, simply add a `>` at the begining of the line. Multiple consequetive quoted lines are grouped toghether in a larger quote.
 
-You can also nest quotes by increasing the nubmer of `>`s. You can also optionally adda spaces between them.
+You can also nest quotes by increasing the number of `>`s. You can also optionally adda spaces between them.
 
 Keep in mind that you cannot go back to a lower level of a quote in the same block after a nested quote in basic MD as this would not be parsed properly. 
 <MdBlock text={`
@@ -194,13 +194,13 @@ text
 ___
 `}/>
 
-### Escape character
-To escape any Character in MD, prepend it with a `\`. To escape the backslash itself, use `\\`
+### Escape Character
+To escape any Character in Markdown, prepend it with a `\`. To escape the backslash itself, use `\\`.
 
 <MdBlock text={`
 This \\*text is not\\* italic, but *this* is.
 `}/>
 
-## ToDo
-- <href>https://daringfireball.net/projects/markdown/</href>
-- <href>https://en.wikipedia.org/wiki/Markdown</href>
+## Further Resources
+- A comprehensive cheat sheet with an interactive tutorial for Markdown syntax can be found [here](https://commonmark.org/help/)
+
