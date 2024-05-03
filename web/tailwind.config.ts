@@ -1,11 +1,14 @@
 import type { Config } from "tailwindcss";
+import {nextui} from "@nextui-org/react";
+
 
 const config: Config = {
-  darkMode: 'media',
+  // darkMode: 'class',
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx,md}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx,md}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx,md}",
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
@@ -21,6 +24,6 @@ const config: Config = {
       filter: ['dark'], // This enables the `dark:` variant for the `filter` utilities.
     },
   },
-  plugins: [],
+  plugins: [nextui()],
 };
 export default config;
