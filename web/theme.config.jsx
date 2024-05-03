@@ -3,7 +3,7 @@ export default {
   project: {
     link: 'https://github.com/ea-tel/detel-book'
   },
-  darkMode: false,
+  darkMode: true,
   sidebar: { toggleButton: true },
   feedback: { content: null },
   editLink: {
