@@ -3,7 +3,7 @@ import {nextui} from "@nextui-org/react";
 
 
 const config: Config = {
-  // darkMode: 'class',
+  darkMode: 'class',
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx,md}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx,md}",
