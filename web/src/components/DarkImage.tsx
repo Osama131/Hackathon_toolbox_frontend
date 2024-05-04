@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import '../../../src/app/globals.css';
+import '@/app/globals.css';
 interface ImageProps {
     src: string;
     alt?: string;

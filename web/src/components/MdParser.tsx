@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Markdown from 'react-markdown';
-import '../../../src/app/globals.css';
+import '@/app/globals.css';
 
 interface MdParserProps {
     text: string;
