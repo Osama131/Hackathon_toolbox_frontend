@@ -10,7 +10,7 @@ const nextConfig = {
     // Optionally, add any other Next.js config below
     // image sources
     images: {
-        domains: ['ea-tel.eu'],
+        remotePatterns: [{hostname:'ea-tel.eu'}],
     },
 };
 
