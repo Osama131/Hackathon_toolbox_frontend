@@ -1,0 +1,15 @@
+.details__card{
+    @apply w-1/2 bg-accent-navy skew-x-[30deg] scale-x-105;
+}
+
+.details__cardheader{
+    @apply flex flex-col -skew-x-[30deg];
+}
+
+.details__cardheader__title{
+    @apply text-5xl font-courtside uppercase;
+}
+
+.details__cardheader__sub{
+    @apply text-4xl font-the-hand uppercase;
+}

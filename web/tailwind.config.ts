@@ -17,6 +17,14 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      fontFamily: {
+        "courtside": "var(--font-courtside)", // note: you can call the left side of this whatever you want - barlow-bold or title-font or foo-bar, this is what you'll use in your Tailwind css classes to use this font
+        "the-hand": "var(--font-the-hand)", // note: the bit that goes inside the var() function is the same variable name we defined in app.tsx
+      },
+      colors: {
+        "accent-navy": "#17376e",
+        "accent-orange": "#FFA911",
+      },
     },
   },
   variants: {
