@@ -21,7 +21,7 @@ const ActivityTracker: React.FC = () => {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        startTime: startDate.current,
+                        timeStamp: startDate.current,
                         timeZoneOffset: startDate.current.getTimezoneOffset(), // in minutes
                         url: window.location.href,
                         activeDuration: visibilityTime,

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import fs from 'fs';
 
 export async function POST(request: NextRequest, response: NextResponse) {
     const cookieName = 'session';
@@ -6,18 +7,27 @@ export async function POST(request: NextRequest, response: NextResponse) {
         return NextResponse.json({ error: 'Could not find session cookie in request' }, { status: 401 })
     }
     const sessionCookie = request.cookies.get(cookieName)?.value;
-    const requestBody = request.body;
 
     // Check if the request body is a valid JSON object with the required fields
-    if (true) {
-        const body = await request.text();
-        // const body = await request.json();
-        console.log(body);
+    const bodyText = await request.text();
+    const activity = JSON.parse(bodyText);
 
-        // Return a 200 OK response
-        return NextResponse.json({ message: 'Activity logged successfully' });
+    /* 
+    * Required fields:
+    * timeStamp: The timestamp when the activity occurred
+    * timeZoneOffset: The timezone offset in minutes
+    * url: The URL of the page where the activity occurred
+    * activeDuration: The duration of the activity in seconds
+    * */
+    if (!activity.timeStamp || !activity.timeZoneOffset || !activity.url || !activity.activeDuration) {
+        return NextResponse.json({ error: 'Invalid request body' }, { status: 400 }); // Return a 400 Bad Request response
     }
     else {
-        return NextResponse.json({ error: 'Invalid request' }, { status: 400 }); // Return a 400 Bad Request response
+        // add the session cookie to the activity object
+        activity.uuid = sessionCookie;
+        // Log the activity to a file
+        fs.appendFileSync('./logbook/user_activity.json', JSON.stringify(activity) + ',\n');
+        return NextResponse.json({ message: 'Activity logged successfully' });
     }
+
 };
