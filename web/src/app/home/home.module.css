@@ -1,17 +1,17 @@
 .details__card{
-    @apply w-1/2 border border-neutral-700 bg-white skew-x-[30deg] scale-x-105;
+    @apply w-1/2 border border-neutral-700 bg-white skew-x-[30deg] scale-x-125;
 }
 
 .details__cardheader{
-    @apply flex flex-col -skew-x-[30deg];
+    @apply flex flex-col -skew-x-[30deg] w-1/2 md:w-auto translate-x-1/2 md:translate-x-0;
 }
 
 .details__cardheader__title{
-    @apply text-5xl font-courtside uppercase;
+    @apply text-3xl md:text-5xl font-courtside uppercase;
 }
 
 .details__cardheader__sub{
-    @apply text-4xl font-the-hand uppercase;
+    @apply text-xl md:text-4xl font-the-hand uppercase;
 }
 
 /*
