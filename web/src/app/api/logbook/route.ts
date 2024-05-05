@@ -1,20 +1,23 @@
-import { NextApiRequest, NextApiResponse } from 'next'
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
-export async function POST(request: NextApiRequest, response: NextResponse) {
-    const sessionCookie = request.cookies.session;
+export async function POST(request: NextRequest, response: NextResponse) {
+    const cookieName = 'session';
+    if (!request.cookies.has(cookieName)) {
+        return NextResponse.json({ error: 'Could not find session cookie in request' }, { status: 401 })
+    }
+    const sessionCookie = request.cookies.get(cookieName)?.value;
     const requestBody = request.body;
 
     // Check if the request body is a valid JSON object with the required fields
-    if (typeof requestBody === 'object' && requestBody.url && requestBody.duration && requestBody.date) {
-        // Access the values of the fields
-        const { url, duration, date } = requestBody;
+    if (true) {
+        const body = await request.text();
+        // const body = await request.json();
+        console.log(body);
 
-        // Your logic here
-
-        return new NextResponse; // End the response
-    } else {
-        // Handle invalid request body
-        return response.status(400).send('Invalid request body');
+        // Return a 200 OK response
+        return NextResponse.json({ message: 'Activity logged successfully' });
+    }
+    else {
+        return NextResponse.json({ error: 'Invalid request' }, { status: 400 }); // Return a 400 Bad Request response
     }
 };
