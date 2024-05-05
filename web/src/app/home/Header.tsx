@@ -3,8 +3,8 @@ import { Card, CardHeader } from '@nextui-org/card'
 
 const Header = () => {
   return (
-    <header className='w-full'>
-      <Card radius="none" className="w-full flex px-10 py-5 dark:bg-accent-navy">
+    <header className='w-full border border-neutral-700'>
+      <Card radius="none" className="w-full flex px-10 py-5 ">
         <CardHeader>
             <Image
                 src="/icons/developer_female.svg"

@@ -1,5 +1,5 @@
 .details__card{
-    @apply w-1/2 bg-accent-navy skew-x-[30deg] scale-x-105;
+    @apply w-1/2 border border-neutral-700 bg-white skew-x-[30deg] scale-x-105;
 }
 
 .details__cardheader{
@@ -12,4 +12,13 @@
 
 .details__cardheader__sub{
     @apply text-4xl font-the-hand uppercase;
+}
+
+/*
+* Created with https://www.css-gradient.com
+* Gradient link: https://www.css-gradient.com/?c1=18376e&c2=ffa912&gt=r&gd=dtr
+*/
+.home {
+    background: #18376E;
+    background: radial-gradient(at right top, #18376E, #FFA912);
 }

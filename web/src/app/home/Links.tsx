@@ -1,24 +1,13 @@
 import Link from "next/link"
+import LinkCard from "./components/LinkCard"
 
 const Links = () => {
   return (
-    <section className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <Link
-            href="/git_intro"
-            className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-            rel="noopener noreferrer"
-        >
-            <h2 className={`mb-3 text-2xl font-semibold`}>
-            Tutorials{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-                -&gt;
-            </span>
-            </h2>
-            <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Review current tutorials (Draft only!!)
-            </p>
-        </Link>
-      </section>
+    <section className="mb-32 grid gap-3 text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-2 lg:text-left">
+      <LinkCard title={"Tutorials"} description={"Review current tutorials (Draft only!!)"} to={"/git_intro"}/>
+      {/* FIXME: Replace dummy text and link with real questionnaire data */}
+      <LinkCard title={"Questionnaire"} description={"Lorem ipsum dolor sit amet"} to={"/"}/>
+    </section>
   )
 }
 
