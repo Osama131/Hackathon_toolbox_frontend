@@ -19,7 +19,7 @@ export async function POST(request: NextRequest, response: NextResponse) {
     * url: The URL of the page where the activity occurred
     * activeDuration: The duration of the activity in seconds
     * */
-    if (!activity.timeStamp || !activity.timeZoneOffset || !activity.url || !activity.activeDuration) {
+    if (!activity.timeStamp || !activity.timeZoneOffset || !activity.url || !activity.activeDuration || !activity.trigger) {
         return NextResponse.json({ error: 'Invalid request body' }, { status: 400 }); // Return a 400 Bad Request response
     }
     else {
