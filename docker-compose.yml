@@ -36,11 +36,11 @@ services:
     #   - "3000:3000"
       # depends_on:
       # - api
-      # volumes:
-      #   - type: bind
-      #     source: web
-      #     target: /app
-      #   - /app/node_modules
+    volumes:
+        - type: bind
+          source: ./web/logbook
+          target: /app/logbook
+          #   - /app/node_modules
       #   - /app/.next
     networks:
       - hack-network-web
@@ -72,7 +72,7 @@ networks:
     # seafile-net:
 
 
-    # volumes:
-    #   mongovolume:
+# volumes:
+  #   mongovolume:
 
 

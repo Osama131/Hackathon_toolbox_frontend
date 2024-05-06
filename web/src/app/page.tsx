@@ -14,7 +14,7 @@ export default function Home() {
         <Header />
         <Description />
         <Details />
-        <Links  />
+        <Links />
       </section>
 
     </main>
