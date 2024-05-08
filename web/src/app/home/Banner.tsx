@@ -2,8 +2,8 @@ import Image from 'next/image'
 
 const Banner = () => {
   return (
-    <section className="h-80 md:h-40 sm:h-40 bg-accent-navy w-full border border-neutral-700 ">
-      <div className="border-8 w-full h-full relative border-white overflow-clip">
+    <section className="bg-accent-navy max-h-[80%] w-full border-5 border-red-500">
+      <div className="border-8 w-full h-full relative border-white overflow-clip border-5"border-green-500>
           <Image
             width="0"
             height="0"
