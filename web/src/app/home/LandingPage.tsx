@@ -14,15 +14,17 @@ export default function LandingPage() {
   const cookieStore = cookies()
   const uuid = cookieStore.get('session')?.value;
   return (
-    <section className={`${styles.main} flex gap-3 min-h-screen flex-col items-center justify-between min-w-screen p-2`}>
-      <section className="h-full flex flex-col gap-3 overflow-y-clip" >
+    <section className={`${styles.main} flex gap-3 min-h-screen min-w-screen flex-col items-center justify-between  p-2`}>
+      <section className="h-[95vh] md:w-[80%] lg:w-[65%] flex flex-col gap-3 overflow-y-clip" >
         <Banner />
          <Header />
       </section>
-      <section className="wrapper flex flex-col gap-3" >
-        <Links uuid={uuid} />
-        <Description />
-        <Details />
+      <section className=" bg-neutral-50 w-full" >
+        <div className="wrapper flex flex-col gap-3">
+          <Links uuid={uuid} />
+          <Description />
+          <Details />
+        </div>
       </section>
 
     </section>

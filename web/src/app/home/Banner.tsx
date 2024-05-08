@@ -2,37 +2,47 @@ import Image from 'next/image'
 
 const Banner = () => {
   return (
-    <section className="bg-accent-navy max-h-[80%] w-full border-5 border-red-500">
-      <div className="border-8 w-full h-full relative border-white overflow-clip border-5"border-green-500>
+    <section className="bg-accent-navy h-[30%] md:h-[40%] relative w-full box-border mx-auto shadow-md">
+      <div
+        className="h-full bg-accent-navy w-2/3 absolute right-0 bottom-0"
+        style={{
+          clipPath: "polygon(25% 0, 100% 0, 100% 100%, 0% 100%)",
+        }}
+      >
+          <Image
+            width="0"
+            height="0"
+            sizes="500"
+            alt="jTELSS"
+            className="w-1/2 h-auto shadow-2xl absolute right-5 bottom-5"
+            src="/JTELSS-brand-logo.png"
+          />
+      </div>
+      <div
+        className="h-full w-2/3  bg-accent-orange "
+        style={{
+          clipPath: "polygon(0 0, 100% 0, 25% 100%, 0% 100%)",
+        }}>
           <Image
             width="0"
             height="0"
             sizes="100vw"
             alt="the de-tel book"
-            className="w-2/3 h-auto z-10 shadow-2xl"
+            className="w-auto md:w-1/2 lg:w-1/3 h-[80%] md:h-auto  z-10 absolute top-0 left-0"
             src="/detel_book_cover.png"
+
           />
-        <div className="box-content w-full absolute">
-          <Image
-            width="0"
-            height="0"
-            sizes="100vw"
-            alt="jTELSS"
-            className="w-full h-auto shadow-2xl right-0 bottom-0"
-            src="/JTELSS-brand-logo.png"
-          />
-        </div>
-        <div className="star relative bottom-0 right-0 w-2/5 z-20 -rotate-[15deg]">
+      </div>
+        <div className="star absolute bottom-1/2 right-1/2 w-2/5 z-20 -rotate-[15deg]">
           <Image
             src="/icons/start_combined.svg"
             alt='star'
             width={0}
             height={0}
-            className="relative bottom-0 right-0 w-full h-auto z-20"
+            className="bottom-0 right-0 w-full h-auto z-20"
           />
-          <p className='absolute top-[40%] left-[50%] -translate-x-[50%] text-16xl md:text-4xl sm:text-4xl font-courtside font-extrabold'>Meets</p>
+          <p className='text-16xl md:text-4xl sm:text-4xl font-courtside font-extrabold'>Meets</p>
         </div>
-      </div>
     </section >
   )
 }
