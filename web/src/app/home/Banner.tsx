@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from "next/image";
 
 const Banner = () => {
   return (
@@ -9,41 +9,46 @@ const Banner = () => {
           clipPath: "polygon(25% 0, 100% 0, 100% 100%, 0% 100%)",
         }}
       >
-          <Image
-            width="0"
-            height="0"
-            sizes="500"
-            alt="jTELSS"
-            className="w-1/2 h-auto shadow-2xl absolute right-5 bottom-5"
-            src="/JTELSS-brand-logo.png"
-          />
+        <Image
+          width="0"
+          height="0"
+          sizes="500"
+          alt="jTELSS"
+          className="w-1/2 h-auto shadow-2xl absolute right-5 bottom-5"
+          src="/JTELSS-brand-logo.png"
+        />
       </div>
       <div
         className="h-full w-2/3  bg-accent-orange "
         style={{
           clipPath: "polygon(0 0, 100% 0, 25% 100%, 0% 100%)",
-        }}>
-          <Image
-            width="0"
-            height="0"
-            sizes="100vw"
-            alt="the de-tel book"
-            className="w-1/2 h-auto z-10 absolute top-0 left-0"
-            src="/detel_book_cover.png"
-          />
+        }}
+      >
+        <Image
+          width="0"
+          height="0"
+          sizes="100vw"
+          alt="the de-tel book"
+          className="w-1/2 h-auto z-10 absolute top-0 left-0"
+          src="/detel_book_cover.png"
+        />
       </div>
-        <div className="star absolute top-1/2 left-1/2 w-2/5 md:w-1/5 -translate-x-[50%] -translate-y-[50%] z-20 -rotate-[15deg] border-5 border-red-500">
+      <div className="star absolute top-1/2 left-1/2 w-2/5 md:w-1/4 lg:w-1/5 -translate-x-[60%] md:-translate-x-[75%] -translate-y-[50%] z-20 -rotate-[15deg] ">
+        <div className="relative">
           <Image
             src="/icons/start_combined.svg"
-            alt='star'
+            alt="star"
             width={0}
             height={0}
-            className="bottom-0 right-0 w-full h-auto z-20"
+            className="w-full h-auto z-20"
           />
-          {/* <p className='text-16xl md:text-4xl sm:text-4xl font-courtside font-extrabold'>Meets</p> */}
+          <p className="text-center lg:text-3xl text-3xl font-courtside font-extrabold absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-[50%]">
+            Meets
+          </p>
         </div>
-    </section >
-  )
-}
+      </div>
+    </section>
+  );
+};
 
-export default Banner
+export default Banner;
