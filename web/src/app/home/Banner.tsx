@@ -28,12 +28,11 @@ const Banner = () => {
             height="0"
             sizes="100vw"
             alt="the de-tel book"
-            className="w-auto md:w-1/2 lg:w-1/3 h-[80%] md:h-auto  z-10 absolute top-0 left-0"
+            className="w-1/2 h-auto z-10 absolute top-0 left-0"
             src="/detel_book_cover.png"
-
           />
       </div>
-        <div className="star absolute bottom-1/2 right-1/2 w-2/5 z-20 -rotate-[15deg]">
+        <div className="star absolute top-1/2 left-1/2 w-2/5 md:w-1/5 -translate-x-[50%] -translate-y-[50%] z-20 -rotate-[15deg] border-5 border-red-500">
           <Image
             src="/icons/start_combined.svg"
             alt='star'
@@ -41,7 +40,7 @@ const Banner = () => {
             height={0}
             className="bottom-0 right-0 w-full h-auto z-20"
           />
-          <p className='text-16xl md:text-4xl sm:text-4xl font-courtside font-extrabold'>Meets</p>
+          {/* <p className='text-16xl md:text-4xl sm:text-4xl font-courtside font-extrabold'>Meets</p> */}
         </div>
     </section >
   )

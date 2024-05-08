@@ -15,7 +15,7 @@ export default function LandingPage() {
   const uuid = cookieStore.get('session')?.value;
   return (
     <section className={`${styles.main} flex gap-3 min-h-screen min-w-screen flex-col items-center justify-between  p-2`}>
-      <section className="h-[95vh] md:w-[80%] lg:w-[65%] flex flex-col gap-3 overflow-y-clip" >
+      <section className="h-[95vh] w-full md:w-[80%] lg:w-[65%] flex flex-col gap-3 overflow-y-clip" >
         <Banner />
          <Header />
       </section>
