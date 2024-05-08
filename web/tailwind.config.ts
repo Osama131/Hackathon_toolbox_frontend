@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
 import {nextui} from "@nextui-org/react";
+import typography from '@tailwindcss/typography';
 
 
 const config: Config = {
@@ -32,6 +33,6 @@ const config: Config = {
       filter: ['dark'], // This enables the `dark:` variant for the `filter` utilities.
     },
   },
-  plugins: [nextui()],
+  plugins: [nextui(), typography()],
 };
 export default config;

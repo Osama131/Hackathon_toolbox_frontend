@@ -1,0 +1,46 @@
+.details__card{
+    @apply w-1/2 border border-neutral-700 skew-x-[30deg] scale-x-125;
+}
+
+.details__cardheader{
+    @apply flex flex-col -skew-x-[30deg] w-1/2 md:w-auto translate-x-1/2 md:translate-x-0;
+}
+
+.details__cardheader__title{
+    @apply text-3xl md:text-5xl font-courtside uppercase;
+}
+
+.details__cardheader__sub{
+    @apply text-xl md:text-4xl font-the-hand uppercase;
+}
+
+/*
+* Created with https://www.css-gradient.com
+* Gradient link: https://www.css-gradient.com/?c1=18376e&c2=ffa912&gt=r&gd=dtr
+*/
+.home {
+    background: #18376E;
+    background: radial-gradient(at right top, #18376E, #FFA912);
+}
+
+.main {
+    backdrop-filter: blur(5px);
+    animation: Gradient 15s ease infinite;
+    background-size: 400% 400%;
+    /* background: linear-gradient(45deg, #18376E, #FFA912, #18376E, #FFA912); */
+    background: -webkit-linear-gradient(45deg, #18376E, #FFA912, #18376E, #FFA912);
+    /* background: -o-linear-gradient(45deg, #18376E, #FFA912, #18376E, #FFA912); */
+    /* background: -moz-linear-gradient(45deg, #18376E, #FFA912, #18376E, #FFA912); */
+  }
+  
+  @keyframes Gradient {
+    0% {
+      background-position: 0% 50%
+    }
+    50% {
+      background-position: 100% 50%
+    }
+    100% {
+      background-position: 0% 50%
+    }
+  }

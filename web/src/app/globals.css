@@ -3,6 +3,21 @@
 @tailwind utilities;
 
 
-.homepage-text{
-  @apply -skew-y-12 translate-x-10  absolute top-0 ;
+.homepage-text {
+  @apply -skew-y-12 translate-x-10 absolute top-0;
+}
+
+@media (prefers-color-scheme: dark) {
+
+}
+
+.prose code {
+  background-color: #f0f0f0;
+  padding: 0 0.5em;
+}
+
+/* globals.css */
+.prose code::before,
+.prose code::after {
+  content: none;
 }

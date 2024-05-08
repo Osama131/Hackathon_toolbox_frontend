@@ -1,5 +1,6 @@
 import { LightImage } from '@/components/DarkImage'
 import MdBlock from '@/components/MdParser'
+import MdPlayground from '@/components/MdPlayground'
 
 import ActivityTracker from '@/components/ActivityTracker'
 
@@ -63,7 +64,7 @@ And so is this _text_ .
 
 <details>
 <summary> Want to make some text both &nbsp;**bold**&nbsp; and &nbsp;*italic*? </summary>
-Simply use any combination of `*`s and `_`s. We don't recommend you to use `___` though as it doesn't always work with all parsers even though it should, in theory, work.
+Simply use any combination of `*`s and `_`s.
 <MdBlock text={`
 ***This*** works,
 
@@ -71,7 +72,7 @@ but also ___this___ works,
 
 and so does **_this_**, and _**this**_.
 
-Mayeb you already guessed that __*this*__ and *__this__* all work. 
+Maybe you already guessed that __*this*__ and *__this__* all work. 
 `}/>
 
 </details> 
@@ -81,12 +82,12 @@ Mayeb you already guessed that __*this*__ and *__this__* all work.
 Ordered lists are written using when writing any number followed by a `.`. The first number you use will be the starting point of your ordered list. All other numbers that come after that do not have any effect as the list items will simply be incremented by 1 for every new item. 
 
 <MdBlock text={`
-# just use the same number
+### just use the same number
 1. item
 1. item
 1. item
 
-# ordered starting from 2
+### ordered starting from 2
 2. item
 3. item
 4. item
@@ -129,7 +130,7 @@ Single line breaks that you have in your input are ignored by the parser. If you
 There won't be a line break after this sentence.
 We are still on the first line.
 
-And now we are on a new line.\
+And now we are on a new line.\\
 And a new one :)
 `}/>
 
@@ -160,7 +161,7 @@ Here the path to the image can also be a url or a relative path.
 #### Inline code
 Inline code is displayed on the same line. It is added by surrounding your code by a backtick `` ` ``.
 <MdBlock text={`
-Here is an example of \`inline\` code
+Here is an example of \`inlined\` code
 `}/>
 
 #### Code blocks
@@ -208,3 +209,8 @@ This \\*text is not\\* italic, but *this* is.
 ## Further Resources
 - A comprehensive cheat sheet with an interactive tutorial for Markdown syntax can be found [here](https://commonmark.org/help/)
 
+
+## Markdown playground
+You can try out markdown in the editor below. Just type/modify the existing text and you will see the parsed output in real time.
+
+<MdPlayground />
