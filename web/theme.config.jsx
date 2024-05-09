@@ -9,7 +9,7 @@ export default {
   editLink: {
     component: null,
   },
-  gitTimestamp: false,
+  gitTimestamp: null,
   footer: {
     text: 'JTELSS - EATEL Summer School on Technology Enhanced Learning',
   }
