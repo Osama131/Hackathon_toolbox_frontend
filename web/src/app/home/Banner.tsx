@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Banner = () => {
   return (
-    <section className="bg-accent-navy h-[30%] md:h-[40%] relative w-full box-border mx-auto shadow-md">
+    <section className=" h-[40vh] sm:h-[50vh] md:h-[50vh] bg-accent-navy relative w-full box-border mx-auto shadow-md">
       <div
         className="h-full bg-accent-navy w-2/3 absolute right-0 bottom-0"
         style={{
@@ -14,7 +14,7 @@ const Banner = () => {
           height="0"
           sizes="500"
           alt="jTELSS"
-          className="w-1/2 h-auto shadow-2xl absolute right-5 bottom-5"
+          className="w-1/2 h-auto absolute right-5 bottom-5"
           src="/JTELSS-brand-logo.png"
         />
       </div>
