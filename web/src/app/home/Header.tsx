@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { Card, CardHeader } from '@nextui-org/card'
 
 const Header = () => {

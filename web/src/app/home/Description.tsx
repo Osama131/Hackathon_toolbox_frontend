@@ -7,7 +7,7 @@ const Description = () => {
       <Card radius="none" className="border border-neutral-700 grid gap-6 mt-0 items-center justify-center bg-opacity-40 flex flex-col justify-between">
         <CardHeader className='flex flex-row items-center'>
           <Image
-            src="/icons/developer_female.svg"
+            src="/hackathon_toolbox/developer_female.svg"
             alt="Female Developer Illustration"
             width={0}
             height={0}
@@ -17,7 +17,7 @@ const Description = () => {
             What will we be doing?
           </h1>
           <Image
-            src="/icons/developer_male.svg"
+            src="/hackathon_toolbox/developer_male.svg"
             alt="Male Developer Illustration"
             width={0}
             height={0}

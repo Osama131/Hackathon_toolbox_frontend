@@ -16,7 +16,7 @@ const Banner = () => {
           sizes="500"
           alt="jTELSS"
           className="w-1/2 h-auto absolute right-5 bottom-5"
-          src="/JTELSS-brand-logo.png"
+          src="/hackathon_toolbox/JTELSS-brand-logo.png"
         />
       </div>
       <div
@@ -31,14 +31,14 @@ const Banner = () => {
           sizes="100vw"
           alt="the de-tel book"
           className="w-1/2 h-auto z-10 absolute top-0 left-0"
-          src="/detel_book_cover.png"
+          src="/hackathon_toolbox/detel_book_cover.png"
         />
       </div>
       <div className={`star absolute top-1/2 left-1/2 w-2/5 md:w-1/4 lg:w-1/5 -translate-x-[60%] md:-translate-x-[75%] -translate-y-[50%] z-20`}>
         <div className={` ${styles.scaleUp} relative`}>
           <div className={` ${styles.wiggle} relative`}>
             <Image
-              src="/icons/start_combined.svg"
+              src="/hackathon_toolbox/start_combined.svg"
               alt="star"
               width={0}
               height={0}

@@ -17,6 +17,7 @@ const nextConfig = {
             // { protocol: 'https', hostname: 'upload.wikimedia.org' }
         ],
     },
+    basePath: "/hackathon_toolbox"
 };
 
 const withNextra = nextra({
