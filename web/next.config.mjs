@@ -13,7 +13,8 @@ const nextConfig = {
         remotePatterns: [
             { protocol: 'https', hostname: 'docs.github.com' },
             { protocol: 'https', hostname: 'wac-cdn.atlassian.com' },
-            { protocol: 'https', hostname: 'i.stack.imgur.com' }
+            { protocol: 'https', hostname: 'i.stack.imgur.com' },
+            { protocol: 'https', hostname: 'upload.wikimedia.org' }
         ],
     },
 };
