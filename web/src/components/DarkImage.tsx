@@ -10,10 +10,10 @@ export const LightImage: React.FC<ImageProps> = ({ src, alt = '' }) => {
 
     return (
         <div className="dark:hue-rotate-180 dark:invert border border-nuetral shadow">
-            <Image
+            <img
                 src={src} alt={alt}
-                height={0}
-                width={0}
+                // height={0}
+                // width={0}
             />
         </div>
     )
@@ -22,10 +22,11 @@ export const LightImage: React.FC<ImageProps> = ({ src, alt = '' }) => {
 export const DarkImage: React.FC<ImageProps> = ({ src, alt = '' }) => {
     return (
         <div className="hue-rotate-180 invert border border-nuetral shadow">
-            <Image
+            <img
                 src={src} alt={alt}
-                height={0}
-                width={0} />
+                // height={0}
+                // width={0} 
+                />
         </div>
     )
 };
