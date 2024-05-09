@@ -102,7 +102,7 @@ Git works by creating a **repository** (aka repo) that contains all the files an
 
 
 You can either create a new repository or clone an existing repository.
-<Tabs items={['Clone an existing repo', 'Create from scratch']}>
+<Tabs items={['Clone an existing repo', 'Create from scratch', 'Create a remote repository']}>
     <Tabs.Tab>
 
     ```bash copy
@@ -166,8 +166,10 @@ You can either create a new repository or clone an existing repository.
     git remote -v
     ```
 
+    </Tabs.Tab>
 
-### But How do I create a remote repository?
+    <Tabs.Tab>
+
 If you want to create a remote repository, you can use a platform like GitHub, GitLab, or Bitbucket. These platforms allow you to create a remote repository and then connect your local repository to the remote repository.
 
 Here's how you can create a new repository on GitHub:
@@ -220,7 +222,7 @@ git commit -m "Your commit message here"
 The `-m` flag is used to add a message to your commit. This message should be a short description of the changes you made in this commit. It's a good idea to write meaningful commit messages so that future you and your team members can understand what changes were made in each commit.
 
 > Here are some exmaples of good and bad commit messages:\
-> 👍 `added introduction chapter to the book`, `fixed dimentions of video iframe on small screens`👍\
+> 👍 `added introduction chapter to the book`, `fixed dimensions of video iframe on small screens`👍\
 > 👎 `fixed stuff`, `updated code`, `changes`, `I'm tired and just want to go home` 👎
 
 <details>
