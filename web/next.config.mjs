@@ -10,7 +10,11 @@ const nextConfig = {
     // Optionally, add any other Next.js config below
     // image sources
     images: {
-        remotePatterns: [{hostname:'ea-tel.eu'}],
+        remotePatterns: [
+            { protocol: 'https', hostname: 'docs.github.com' },
+            { protocol: 'https', hostname: 'wac-cdn.atlassian.com' },
+            { protocol: 'https', hostname: 'i.stack.imgur.com' }
+        ],
     },
 };
 

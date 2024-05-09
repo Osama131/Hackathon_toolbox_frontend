@@ -6,20 +6,26 @@ interface ImageProps {
     alt?: string;
 }
 
-export const LightImage: React.FC<ImageProps> = ({ src, alt }) => {
-    /** @todo: use Image instead of img */
+export const LightImage: React.FC<ImageProps> = ({ src, alt = '' }) => {
+
     return (
-        <div className="dark:hue-rotate-180 dark:invert">
-            <img src={src} alt={alt} />
+        <div className="dark:hue-rotate-180 dark:invert border border-nuetral shadow">
+            <Image
+                src={src} alt={alt}
+                height={0}
+                width={0}
+            />
         </div>
     )
 };
 
-export const DarkImage: React.FC<ImageProps> = ({ src, alt }) => {
-    /** @todo: use Image instead of img */
+export const DarkImage: React.FC<ImageProps> = ({ src, alt = '' }) => {
     return (
-        <div className="hue-rotate-180 invert">
-            <img src={src} alt={alt} />
+        <div className="hue-rotate-180 invert border border-nuetral shadow">
+            <Image
+                src={src} alt={alt}
+                height={0}
+                width={0} />
         </div>
     )
 };
