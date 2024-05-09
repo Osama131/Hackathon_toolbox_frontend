@@ -1,24 +1,39 @@
+"use client"
+
 import Link from "next/link"
+import { useEffect, useState } from "react"
 
-
-const LinkCard = ({ title, description, to, uuid, newTab = false, active = true, track_uuid = false }: {
+const LinkCard = ({ title, active_description, inactive_description, to, uuid, newTab = true, startTime, endTime }: {
     title: string,
     to: string,
-    description: string,
-    newTab?: boolean
-    active?: boolean
-    track_uuid?: boolean
+    active_description: string,
+    inactive_description: string,
     uuid?: string
+    newTab?: boolean,
+    startTime: Date,
+    endTime: Date
 }) => {
 
-    const active_styling = "group rounded-none border px-5 py-4 transition-colors border-neutral-700 hover:bg-neutral-800/30"
-    const inactive_styling = "group rounded-none border px-5 py-4 transition-colors border-neutral-700 bg-neutral-800/30"
+    const [active, setActive] = useState(false)
 
-    if (track_uuid) {
-        to = `${to}&uuid=${uuid}`
-    }
-    const inactive_questionnaire_text = "Not available at the moment"
+    useEffect(() => {
+        const checkTime = () => {
+            const now = new Date();
+            setActive(now >= startTime && now <= endTime);
+        };
 
+        // Run immediately on mount
+        checkTime();
+
+        // Then run every minute
+        const intervalId = setInterval(checkTime, 1 * 1000);
+
+        // Clean up on unmount
+        return () => clearInterval(intervalId);
+    }, [startTime, endTime]);
+
+    const active_styling = "group rounded-lg border px-5 py-4 transition-colors border-neutral-700 bg-[#18376E] hover:bg-[#18376E]/50 shadow-xl text-white hover:text-black"
+    const inactive_styling = "rounded-lg border px-5 py-4 transition-colors border-neutral-700 bg-inherit text-black"
 
     return (
         <Link
@@ -34,7 +49,7 @@ const LinkCard = ({ title, description, to, uuid, newTab = false, active = true,
                 </span>
             </h2>
             <p className={`m-0 max-w-[30ch] text-xl md:text-3xl opacity-50 font-the-hand`}>
-                {active ? description : inactive_questionnaire_text}
+                {active ? active_description : inactive_description}
             </p>
         </Link>
     )
