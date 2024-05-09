@@ -14,7 +14,7 @@ export default function LandingPage() {
   var uuid: string = cookieStore.get('session')?.value ?? '';
 
   return (
-    <section className={`w-full min-h-screen flex gap-3 flex-col items-center justify-between p-2`}>
+    <section className={`bg-gradient-to-b from-[#C9C9E0] to-[#D6B8A4] w-full min-h-screen flex gap-3 flex-col items-center justify-between p-2`}>
       <div className="flex flex-col w-full md:w-[80%] lg:w-[65%] shadow-2xl">
         <Banner />
         <Header />

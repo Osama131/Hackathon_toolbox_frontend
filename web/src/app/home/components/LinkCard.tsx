@@ -25,14 +25,14 @@ const LinkCard = ({ title, active_description, inactive_description, to, uuid, n
         // Run immediately on mount
         checkTime();
 
-        // Then run every minute
-        const intervalId = setInterval(checkTime, 1 * 1000);
+        // Then run every 1/2 minute
+        const intervalId = setInterval(checkTime, 30 * 1000);
 
         // Clean up on unmount
         return () => clearInterval(intervalId);
     }, [startTime, endTime]);
 
-    const active_styling = "group rounded-lg border px-5 py-4 transition-colors border-neutral-700 bg-[#18376E] hover:bg-[#18376E]/50 shadow-xl text-white hover:text-black"
+    const active_styling = "group rounded-lg border px-5 py-4 transition-colors border-neutral-700 bg-[#18376E] hover:bg-[#EBE540]/50 shadow-xl text-white hover:text-black"
     const inactive_styling = "rounded-lg border px-5 py-4 transition-colors border-neutral-700 bg-inherit text-black"
 
     return (
