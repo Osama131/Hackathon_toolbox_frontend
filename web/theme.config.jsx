@@ -1,7 +1,7 @@
 export default {
   logo: <span>DE-TEL</span>,
   project: {
-    link: 'https://github.com/ea-tel/detel-book'
+    link: 'https://github.com/CleoSchulten/detel-hack-jtelss2024'
   },
   darkMode: true,
   sidebar: { toggleButton: true },
