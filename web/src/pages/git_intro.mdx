@@ -87,6 +87,7 @@ Frist, you ned to have Git installed on your computer.
     </Tabs.Tab>
 
 </Tabs>
+---
 
 To verify that git is installed, you can run 
 ``
@@ -164,8 +165,6 @@ You can either create a new repository or clone an existing repository.
     ```bash copy
     git remote -v
     ```
-</Tabs.Tab>
-</Tabs>
 
 
 ### But How do I create a remote repository?
@@ -182,6 +181,9 @@ Here's how you can create a new repository on GitHub:
 
 You now have a new repository on GitHub that you can clone or connect your local repository to it.
 
+</Tabs.Tab>
+</Tabs>
+---
 ### Staging changes
 Now that you have a repository set up, you can start making changes like adding/deleting files or modifying existing files. Once you've made some changes, you can use the `git add` command to add those changes to the **staging area**. The staging area is where you prepare your changes before you commit them to the repository.
 
@@ -218,7 +220,7 @@ git commit -m "Your commit message here"
 The `-m` flag is used to add a message to your commit. This message should be a short description of the changes you made in this commit. It's a good idea to write meaningful commit messages so that future you and your team members can understand what changes were made in each commit.
 
 > Here are some exmaples of good and bad commit messages:\
-> 👍 `added introduction chapter to the book`, `fixed diemntions of video iframe on small screens`👍\
+> 👍 `added introduction chapter to the book`, `fixed dimentions of video iframe on small screens`👍\
 > 👎 `fixed stuff`, `updated code`, `changes`, `I'm tired and just want to go home` 👎
 
 <details>
@@ -312,7 +314,9 @@ When you run into a conflict, Git will tell you which files have conflicts and a
 you can configure Git to use that editor. You can do this by setting the `merge.tool` configuration option in Git. For example, if you want to use Visual Studio Code as your merge tool, you can run the following command:
   
 ```bash copy
-git config --global merge.tool vscode # the global flag is used to set the configuration globally. You can also set it locally for a specific repository by omitting the global flag.
+# the global flag is used to set the configuration globally.
+# You can also set it locally for a specific repository by omitting the global flag.
+git config --global merge.tool vscode
 ```
 </details>  
 </Tabs.Tab>
@@ -333,6 +337,8 @@ Once you've created the pull request, you can review the changes, discuss them w
 **Remember** that when you merge the branches remotely, the local target branch is not automatically updated. You have to pull the changes from the remote repository to update your local repository.
 </Tabs.Tab>
 </Tabs>
+---
+
 
 ## Summary
 <div style={{ maxWidth:"640px", margin: "auto"}}>
