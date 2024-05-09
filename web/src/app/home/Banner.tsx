@@ -1,4 +1,5 @@
 import Image from "next/image";
+import styles from "./LandingPage.module.css"
 
 const Banner = () => {
   return (
@@ -33,18 +34,20 @@ const Banner = () => {
           src="/detel_book_cover.png"
         />
       </div>
-      <div className="star absolute top-1/2 left-1/2 w-2/5 md:w-1/4 lg:w-1/5 -translate-x-[60%] md:-translate-x-[75%] -translate-y-[50%] z-20 -rotate-[15deg] ">
-        <div className="relative">
-          <Image
-            src="/icons/start_combined.svg"
-            alt="star"
-            width={0}
-            height={0}
-            className="w-full h-auto z-20"
-          />
-          <p className="text-center lg:text-3xl text-3xl font-courtside font-extrabold absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-[50%]">
-            Meets
-          </p>
+      <div className={`star absolute top-1/2 left-1/2 w-2/5 md:w-1/4 lg:w-1/5 -translate-x-[60%] md:-translate-x-[75%] -translate-y-[50%] z-20`}>
+        <div className={` ${styles.scaleUp} relative`}>
+          <div className={` ${styles.wiggle} relative`}>
+            <Image
+              src="/icons/start_combined.svg"
+              alt="star"
+              width={0}
+              height={0}
+              className={`w-full h-auto z-20 `}
+            />
+            <p className="text-center lg:text-3xl text-3xl font-courtside font-extrabold absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-[50%]">
+              Meets
+            </p>
+          </div>
         </div>
       </div>
     </section>

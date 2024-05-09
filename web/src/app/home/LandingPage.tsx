@@ -19,7 +19,7 @@ export default function LandingPage() {
         <Banner />
         <Header />
       </div>
-      <section className="flex flex-col gap-3 bg-neutral-50 md:w-[80%] lg:w-[65%]" >
+      <section className="flex flex-col gap-3 w-full md:w-[80%] lg:w-[65%]" >
 
         <Links uuid={uuid} />
         <Description />
