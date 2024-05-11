@@ -16,7 +16,7 @@ const ActivityTracker: React.FC = () => {
 
     const handleVisibilityChange = (trigger: 'visibility' | 'routing') => {
         const url = window.location.href;
-        console.info('handleVisibilityChange(): ', url, trigger );
+
         if (document.visibilityState === 'visible' && trigger === 'visibility') {
             startTimeRef.current = Date.now();
             startDate.current = new Date();
@@ -32,7 +32,20 @@ const ActivityTracker: React.FC = () => {
                 trigger: trigger
             };
 
-            navigator.sendBeacon('/api/logbook', JSON.stringify(activity));
+            const trackerAPI = '/hackathon_toolbox/api/logbook';
+            const body = JSON.stringify(activity);
+
+            console.info('handleVisibilityChange(): ', url, trigger);
+            if (navigator.sendBeacon) {
+                navigator.sendBeacon(trackerAPI, body);
+            } else {
+                fetch(trackerAPI, {
+                    body: body,
+                    method: 'POST',
+                    keepalive: true
+                });
+
+            }
         }
     };
 
@@ -47,9 +60,9 @@ const ActivityTracker: React.FC = () => {
     useEffect(() => {
         document.addEventListener('visibilitychange', visibilityChangeHandler);
         // document.addEventListener('beforeunload', handleVisibilityChange);
-        router.events.on('routeChangeStart',routingChangeHandler);
+        router.events.on('routeChangeStart', routingChangeHandler);
         // router.events.on('routeChangeComplete', routingChangeHandler);
-        
+
         return () => {
             document.removeEventListener('visibilitychange', visibilityChangeHandler);
             // document.removeEventListener('beforeunload',  handleVisibilityChange);

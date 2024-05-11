@@ -19,7 +19,7 @@ const Links = ({ uuid }: { uuid: string }) => {
   return (
     <section className="grid gap-5 w-full grid-cols-1 md:grid-cols-3">
       <Link
-        href={'/git_intro'}
+        href={'/tutorials/git_intro'}
         className="group rounded-lg border px-5 py-4 transition-colors border-neutral-700 bg-[#18376E] hover:bg-[#EBE540]/50 shadow-xl text-white hover:text-black"
         rel="noopener noreferrer"
       >

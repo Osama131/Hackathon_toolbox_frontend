@@ -12,5 +12,18 @@ export default {
   gitTimestamp: null,
   footer: {
     text: 'JTELSS - EATEL Summer School on Technology Enhanced Learning',
-  }
+  },
+
+  useNextSeoProps() {
+    return {
+      titleTemplate: '%s - Hackathon Toolbox'
+    }
+  },
+  head: (
+    <>
+    <link rel="icon" href="/hackathon_toolbox/favicon.ico" />
+    </>
+  ),
+
+
 }
