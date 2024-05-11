@@ -32,7 +32,7 @@ const ActivityTracker: React.FC = () => {
                 trigger: trigger
             };
 
-            const trackerAPI = '/hackathon_toolbox/api/logbook';
+            const trackerAPI = '/hack-participant-kit/api/logbook';
             const body = JSON.stringify(activity);
 
             console.info('handleVisibilityChange(): ', url, trigger);

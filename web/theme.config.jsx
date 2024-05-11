@@ -21,7 +21,7 @@ export default {
   },
   head: (
     <>
-    <link rel="icon" href="/hackathon_toolbox/favicon.ico" />
+      <link rel="icon" href="/hack-participant-kit/favicon.ico" />
     </>
   ),
 
