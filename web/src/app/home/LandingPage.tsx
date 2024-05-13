@@ -3,7 +3,8 @@ import Header from './Header';
 import Description from './Description';
 import Details from './Details';
 import Links from './Links';
-import { cookies } from 'next/headers'
+import ConsentDialog from './components/ConsentDialog';
+import { cookies } from 'next/headers';
 
 import '@/app/globals.css';
 
@@ -15,6 +16,7 @@ export default function LandingPage() {
 
   return (
     <section className={`bg-gradient-to-b from-[#C9C9E0] to-[#D6B8A4] w-full min-h-screen flex gap-3 flex-col items-center justify-between p-2`}>
+      <ConsentDialog />
       <div className="flex flex-col w-full md:w-[80%] lg:w-[65%] shadow-2xl">
         <Banner />
         <Header />

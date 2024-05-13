@@ -6,6 +6,9 @@ const Links = ({ uuid }: { uuid: string }) => {
   const pre_questionnaire_id = 583379
   const post_questionnaire_id = 974285
 
+  const pre_questionnaire_link = `https://limesurvey.uni-due.de/index.php/${pre_questionnaire_id}?lang=en`
+  const post_questionnaire_link = `https://limesurvey.uni-due.de/index.php/${post_questionnaire_id}?lang=en`
+
   const pre_quesstionnaire_start_time = new Date();
   const pre_quesstionnaire_end_time = new Date("2024-05-18T16:20:00.000");
   const post_quesstionnaire_start_time = new Date("2024-05-18T16:25:00.000");
@@ -30,8 +33,8 @@ const Links = ({ uuid }: { uuid: string }) => {
           </span>
         </h2>
       </Link>
-      <LinkCard uuid={uuid} title={"Pre-Questionnaire"} startTime={pre_quesstionnaire_start_time} endTime={pre_quesstionnaire_end_time} active_description={active_questionnaire_text} inactive_description={inactive_questionnaire_text} to={`https://limesurvey.uni-due.de/index.php/${pre_questionnaire_id}?lang=en&uuid=${uuid}`} />
-      <LinkCard uuid={uuid} title={"Post-Questionnaire"} startTime={post_quesstionnaire_start_time} endTime={post_quesstionnaire_end_time} active_description={active_questionnaire_text} inactive_description={inactive_questionnaire_text} to={`https://limesurvey.uni-due.de/index.php/${post_questionnaire_id}?lang=en&uuid=${uuid}`} />
+      <LinkCard uuid={uuid} title={"Pre-Questionnaire"} startTime={pre_quesstionnaire_start_time} endTime={pre_quesstionnaire_end_time} active_description={active_questionnaire_text} inactive_description={inactive_questionnaire_text} to={pre_questionnaire_link} />
+      <LinkCard uuid={uuid} title={"Post-Questionnaire"} startTime={post_quesstionnaire_start_time} endTime={post_quesstionnaire_end_time} active_description={active_questionnaire_text} inactive_description={inactive_questionnaire_text} to={post_questionnaire_link} />
     </section>
   )
 }
