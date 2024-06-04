@@ -21,9 +21,7 @@ export default {
   },
   head: (
     <>
-      <link rel="icon" href="/hack-participant-kit/favicon.ico" />
+      <link rel="icon" href={`${process.env.BASE_PATH}/favicon.ico`} />
     </>
   ),
-
-
 }

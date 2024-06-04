@@ -15,7 +15,7 @@ const LinkCard = ({ title, active_description, inactive_description, to, newTab 
 }) => {
 
     const [active, setActive] = useState(false)
-    const [accepted_cookie, setAccepted_cookie] = useState(localStorage.getItem('accepted_cookie'))
+    const [accepted_cookie, setAccepted_cookie] = useState(typeof window !== 'undefined' ? localStorage.getItem('accepted_cookie'): null)
     const [final_to, setFinal_to] = useState(accepted_cookie ? `${to}?uuid=${uuid}` : to)
 
     useEffect(() => {
@@ -39,7 +39,7 @@ const LinkCard = ({ title, active_description, inactive_description, to, newTab 
             setAccepted_cookie(localStorage.getItem('accepted_cookie'));
             console.log('locaStorageChangeEvent: accepted_cookie: ', accepted_cookie)
             if (accepted_cookie === 'true') {
-                setFinal_to(`${to}?uuid=${uuid}`)
+                setFinal_to(accepted_cookie ? `${to}?uuid=${uuid}` : to);
             }
         }
 
