@@ -1,3 +1,5 @@
+import Forum from '@/components/discussionForum/Forum';
+
 export default {
   logo: <span>DE-TEL</span>,
   project: {
@@ -5,6 +7,7 @@ export default {
   },
   darkMode: true,
   sidebar: { toggleButton: true },
+  toc: {extraContent: Forum},
   feedback: { content: null },
   editLink: {
     component: null,
