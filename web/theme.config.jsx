@@ -3,7 +3,10 @@ import Forum from '@/components/discussionForum/Forum';
 export default {
   logo: <span>DE-TEL</span>,
   project: {
-    link: 'https://github.com/CleoSchulten/detel-hack-jtelss2024'
+    link: 'https://github.com/hackailiteracy/hackailiteracy.github.io'
+  },
+  chat:{
+    link: 'https://discord.gg/pf2Ck8bhag'
   },
   darkMode: true,
   sidebar: { toggleButton: true },
@@ -14,7 +17,7 @@ export default {
   },
   gitTimestamp: null,
   footer: {
-    text: 'JTELSS - EATEL Summer School on Technology Enhanced Learning',
+    text: 'Hackailiteracy - AIED 2024 ',
   },
 
   useNextSeoProps() {
