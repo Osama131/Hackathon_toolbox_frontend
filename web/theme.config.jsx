@@ -7,7 +7,7 @@ export default {
   },
   darkMode: true,
   sidebar: { toggleButton: true },
-  toc: {extraContent: Forum},
+  // toc: {extraContent: Forum},
   feedback: { content: null },
   editLink: {
     component: null,

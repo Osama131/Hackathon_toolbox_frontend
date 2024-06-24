@@ -1,37 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Comment from './Comment';
-import NewComment from './NewComment';
+import CommentBox from './CommentBox';
 
-interface CommentData {
-    id: number;
-    text: string;
+
+interface ForumProps {
+    tutorialId: string;
 }
 
-const Forum: React.FC = () => {
-    const [comments, setComments] = useState<CommentData[]>([]);
+const Forum: React.FC<ForumProps> = ({ tutorialId }) => {
 
-    const addComment = (text: string) => {
-        const newComment: CommentData = {
-            id: comments.length + 1,
-            text: text,
-        };
-        setComments([...comments, newComment]);
-    };
+    const [comments, setComments] = useState<any[]>([]);
+
+    const refresh = () => {
+        // fetch comments
+        fetch(`/api/forumComment/comments?tutorialId=${tutorialId}`, { method: 'GET' })
+            .then((response) => response.json())
+            .then((data) => {
+                setComments(data.comments);
+            });
+    }
+
+    // use effect to fetch comments on page load
+    useEffect(() => {
+        refresh();
+    }, []);
+
 
     return (
         <div>
-            <h1>Discussion Forum</h1>
-            <div>
-                <h2>Comments</h2>
+            <div
+                className="py-2"
+            >
                 {comments.map((comment) => (
-                    <Comment key={comment.id} text={comment.text} />
+                    <Comment
+                        author={comment.author}
+                        content={comment.comment}
+                        timestamp={comment.timestamp}
+                        avatarConfig={comment.avatarConfig}
+                    />
                 ))}
             </div>
-            <div>
-                <h2>Add a New Comment</h2>
-                <NewComment onAddComment={addComment} />
-            </div>
-        </div>
+
+
+            <CommentBox tutorialId={tutorialId} onUpdate={() => refresh()} />
+
+        </div >
     );
 };
 
