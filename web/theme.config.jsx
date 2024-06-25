@@ -1,7 +1,7 @@
 import EmojiScale from '@/components/emojiScale/EmojiScale';
 
 export default {
-  logo: <span>DE-TEL</span>,
+  logo: <span>Home</span>,
   project: {
     link: 'https://github.com/hackailiteracy/hackailiteracy.github.io'
   },

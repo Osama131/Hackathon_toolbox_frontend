@@ -37,7 +37,6 @@ const LinkCard = ({ title, active_description, inactive_description, to, newTab 
     useEffect(() => {
         function checkLocalStorageUpdate() {
             setAccepted_cookie(localStorage.getItem('accepted_cookie'));
-            console.log('locaStorageChangeEvent: accepted_cookie: ', accepted_cookie)
             if (accepted_cookie === 'true') {
                 setFinal_to(accepted_cookie ? `${to}?uuid=${uuid}` : to);
             }

@@ -4,7 +4,7 @@ import { Card, CardHeader, CardBody } from '@nextui-org/card'
 const Description = () => {
   return (
     <section className='w-full'>
-      <Card radius="none" className="border border-neutral-700 grid gap-6 mt-0 items-center justify-center bg-opacity-40 flex flex-col justify-between">
+      <Card radius="none" className="border border-[#C04C12] grid gap-6 mt-0 items-center justify-center bg-opacity-40 flex flex-col justify-between">
         <CardHeader className='flex flex-row items-center'>
           <Image
             src={`${process.env.BASE_PATH}/developer_female.svg`}
@@ -27,7 +27,7 @@ const Description = () => {
         <CardBody className='flex items-center justify-center'>
 
           <p className='font-the-hand text-center text-xl md:text-4xl text-center mx-10'>
-            We will work in groups to collaborate on a chapter for the DE-TEL Book.
+            We will work in groups to collaborate on Building a Toolbox of Human-Centred Strategies for AI Literacy
           </p>
 
         </CardBody>

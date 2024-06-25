@@ -36,7 +36,6 @@ const ActivityTracker: React.FC = () => {
             const trackerAPI = `/api/logbook/`; // Assign the value using the assignment operator
             const body = JSON.stringify(activity);
 
-            console.info('handleVisibilityChange(): ', url, trigger);
             if (navigator.sendBeacon) {
                 navigator.sendBeacon(trackerAPI, body);
             } else {
