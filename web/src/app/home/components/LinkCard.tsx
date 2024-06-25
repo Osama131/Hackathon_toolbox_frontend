@@ -52,7 +52,7 @@ const LinkCard = ({ title, active_description, inactive_description, to, newTab 
     }, [accepted_cookie, to, uuid]
     );
 
-    const active_styling = "group rounded-lg border px-5 py-4 transition-colors border-neutral-700 bg-[#18376E] hover:bg-[#EBE540]/50 shadow-xl text-white hover:text-black"
+    const active_styling = "group rounded-lg border px-5 py-4 transition-colors border-neutral-700 bg-amber-600 hover:bg-[#EBE540]/50 shadow-xl text-white hover:text-black"
     const inactive_styling = "rounded-lg border px-5 py-4 transition-colors border-neutral-700 bg-inherit text-black"
 
     return (
