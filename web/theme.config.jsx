@@ -1,4 +1,4 @@
-import Forum from '@/components/discussionForum/Forum';
+import EmojiScale from '@/components/emojiScale/EmojiScale';
 
 export default {
   logo: <span>DE-TEL</span>,
@@ -10,7 +10,7 @@ export default {
   },
   darkMode: true,
   sidebar: { toggleButton: true },
-  // toc: {extraContent: Forum},
+  toc: {extraContent: EmojiScale},
   feedback: { content: null },
   editLink: {
     component: null,
