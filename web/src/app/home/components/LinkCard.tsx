@@ -15,7 +15,7 @@ const LinkCard = ({ title, active_description, inactive_description, to, newTab 
 }) => {
 
     const [active, setActive] = useState(false)
-    const [accepted_cookie, setAccepted_cookie] = useState(typeof window !== 'undefined' ? localStorage.getItem('accepted_cookie'): null)
+    const [accepted_cookie, setAccepted_cookie] = useState(typeof window !== 'undefined' ? localStorage.getItem('accepted_cookie') : null)
     const [final_to, setFinal_to] = useState(accepted_cookie ? `${to}?uuid=${uuid}` : to)
 
     useEffect(() => {
@@ -58,10 +58,10 @@ const LinkCard = ({ title, active_description, inactive_description, to, newTab 
 
     return (
         <Link
-            href={active ? final_to : ' '}
+            href={final_to}
             className={active ? active_styling : inactive_styling}
             rel="noopener noreferrer"
-            target={newTab && active ? "_blank" : undefined}
+            target={"_blank"}
         >
             <h2 className={`mb-3 text-3xl md:text-5xl font-the-hand`}>
                 {title}{" "}
