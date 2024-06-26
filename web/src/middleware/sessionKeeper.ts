@@ -19,7 +19,7 @@ export default async function sessionKeeper(request: NextRequest) {
     // Workaround for devices that could access the site without before the latest modification about the session cookie
     // POST to /api/uuid
     const url = request.nextUrl.clone()
-    url.pathname = '/api/uuid'
+    url.pathname = `/api/uuid`
     const response = await fetch(url, {
       method: 'POST',
       headers: {

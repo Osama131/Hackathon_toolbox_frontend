@@ -5,12 +5,12 @@ export default {
   project: {
     link: 'https://github.com/hackailiteracy/hackailiteracy.github.io'
   },
-  chat:{
+  chat: {
     link: 'https://discord.gg/pf2Ck8bhag'
   },
   darkMode: true,
   sidebar: { toggleButton: true },
-  toc: {extraContent: EmojiScale},
+  toc: { extraContent: EmojiScale },
   feedback: { content: null },
   editLink: {
     component: null,
@@ -27,7 +27,7 @@ export default {
   },
   head: (
     <>
-      <link rel="icon" href={`${process.env.BASE_PATH}/favicon.ico`} />
+      <link rel="icon" href={`/hack-participant-kit/favicon.ico`} />
     </>
   ),
 }

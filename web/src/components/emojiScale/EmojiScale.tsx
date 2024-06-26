@@ -11,19 +11,21 @@ type EmojiScaleProps = {
     tutorialId: string;
 };
 
-const EmojiScale: React.FC<EmojiScaleProps> = ({ tutorialId }) => {
+// const EmojiScale: React.FC<EmojiScaleProps> = ({ tutorialId }) => {
+const EmojiScale = () => {
     // fallback if props are not provided
-    if (!tutorialId) {
-        const { title } = useConfig()
-        tutorialId = title;
-    }
+    // if (!tutorialId) {
+    const { title } = useConfig()
+    const tutorialId = title;
+    // tutorialId = title;
+    // }
 
     const [selectedEmoji, setSelectedEmoji] = React.useState(100);
 
     const handleEmojiClick = (rating: number) => {
         setSelectedEmoji(rating);
         // Send the rating to the server
-        fetch('/api/emojiScale', {
+        fetch(`/hack-participant-kit/api/emojiScale`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -39,7 +41,7 @@ const EmojiScale: React.FC<EmojiScaleProps> = ({ tutorialId }) => {
 
     // use effect to fetch the rating from the server
     React.useEffect(() => {
-        fetch(`/api/emojiScale?tutorialId=${tutorialId}`)
+        fetch(`/hack-participant-kit/api/emojiScale?tutorialId=${tutorialId}`)
             .then(response => response.json())
             .then(data => {
                 if (data.rating) {

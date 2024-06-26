@@ -122,7 +122,7 @@ const CommentBox: React.FC<CommentBoxProps> = ({ tutorialId, onUpdate }) => {
     setAvatarConfig(newAvatarConfig);
     localStorage.setItem('avatarConfig', JSON.stringify(newAvatarConfig));
     // post the new avatarConfig to the server
-    fetch('/api/forumComment/avatar', {
+    fetch(`/hack-participant-kit/api/forumComment/avatar`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -182,8 +182,8 @@ const CommentBox: React.FC<CommentBoxProps> = ({ tutorialId, onUpdate }) => {
   const postComment = async () => {
     setLoading(true);
     try {
-      const entry = { tutorialId: tutorialId, comment: comment, author: username, avatarConfig: avatarConfig};
-      const response = await fetch('/api/forumComment/comments', {
+      const entry = { tutorialId: tutorialId, comment: comment, author: username, avatarConfig: avatarConfig };
+      const response = await fetch(`/hack-participant-kit/api/forumComment/comments`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

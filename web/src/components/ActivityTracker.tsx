@@ -33,7 +33,7 @@ const ActivityTracker: React.FC = () => {
             };
 
             // TODO: question: Do I need to add hack-participant-kit or process.env.BASE_PATH to the trackerAPI??
-            const trackerAPI = `/api/logbook/`; // Assign the value using the assignment operator
+            const trackerAPI = `/hack-participant-kit/api/logbook/`; // Assign the value using the assignment operator
             const body = JSON.stringify(activity);
 
             if (navigator.sendBeacon) {

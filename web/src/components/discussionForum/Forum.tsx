@@ -13,7 +13,7 @@ const Forum: React.FC<ForumProps> = ({ tutorialId }) => {
 
     const refresh = () => {
         // fetch comments
-        fetch(`/api/forumComment/comments?tutorialId=${tutorialId}`, { method: 'GET' })
+        fetch(`/hack-participant-kit/api/forumComment/comments?tutorialId=${tutorialId}`, { method: 'GET' })
             .then((response) => response.json())
             .then((data) => {
                 setComments(data.comments);
@@ -31,8 +31,9 @@ const Forum: React.FC<ForumProps> = ({ tutorialId }) => {
             <div
                 className="py-2"
             >
-                {comments.map((comment) => (
+                {comments.map((comment, index) => (
                     <Comment
+                        key={comment.id || index}
                         author={comment.author}
                         content={comment.comment}
                         timestamp={comment.timestamp}
