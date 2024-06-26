@@ -13,7 +13,7 @@ const Banner = () => {
           height="0"
           sizes="500"
           alt="aied_2024"
-          className="w-1/2 h-auto absolute right-5 bottom-5"
+          className="w-1/2 h-auto absolute right-5 bottom-5 z-20"
           src={`/hack-participant-kit/aied_logo.png`}
         />
       </div>

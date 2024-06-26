@@ -3,8 +3,8 @@ import Link from "next/link"
 import LinkCard from "./components/LinkCard"
 
 const Links = ({ uuid }: { uuid: string }) => {
-  const pre_questionnaire_id = 583379
-  const post_questionnaire_id = 974285
+  const pre_questionnaire_id = 866624
+  const post_questionnaire_id = 483132
 
   const pre_questionnaire_link = `https://limesurvey.uni-due.de/index.php/${pre_questionnaire_id}?lang=en`
   const post_questionnaire_link = `https://limesurvey.uni-due.de/index.php/${post_questionnaire_id}?lang=en`
