@@ -17,7 +17,7 @@ const nextConfig = {
             // { protocol: 'https', hostname: 'upload.wikimedia.org' }
         ],
     },
-    basePath: "/hack-participant-kit"
+    basePath: process.env.BASE_PATH,
 };
 
 const withNextra = nextra({

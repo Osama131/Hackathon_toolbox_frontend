@@ -9,25 +9,27 @@ const ConsentDialog = () => {
     const accepted_cookie = "accepted_cookie"; // Declare the variable accepted_cookie
 
     useEffect(() => {
-        if (localStorage.getItem(accepted_cookie) !== null) {
-        if (localStorage.getItem(accepted_cookie) === 'false') { onOpen(); } 
+        if (typeof window !== 'undefined') {
+            if (localStorage.getItem(accepted_cookie) !== null) {
+                if (localStorage.getItem(accepted_cookie) === 'false') { onOpen(); }
+            }
         }
         else { onOpen(); }
-    }, [localStorage.getItem(accepted_cookie)])
+    }, [typeof window !== 'undefined' ? localStorage.getItem(accepted_cookie) : null])
 
     const onAccept = () => {
-            const key = 'accepted_cookie'; // Declare the variable key
-            document.cookie = "accepted_cookie=true; max-age=2592000";
-            localStorage.setItem(key, 'true');
-            window.dispatchEvent(new StorageEvent('storage', {
-                    key: key, // Use the declared variable key
-                    newValue: 'true',
-                    oldValue: 'false',
-                    storageArea: localStorage
-                }));
-            //reload the page to update the links
-            // window.location.reload();
-            onOpenChange();
+        const key = 'accepted_cookie'; // Declare the variable key
+        document.cookie = "accepted_cookie=true; max-age=2592000";
+        localStorage.setItem(key, 'true');
+        window.dispatchEvent(new StorageEvent('storage', {
+            key: key, // Use the declared variable key
+            newValue: 'true',
+            oldValue: 'false',
+            storageArea: localStorage
+        }));
+        //reload the page to update the links
+        // window.location.reload();
+        onOpenChange();
     }
 
     const onReject = () => {

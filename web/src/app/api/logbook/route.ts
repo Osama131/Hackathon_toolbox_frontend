@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
-import fs from 'fs';
+import { MongoClient } from 'mongodb';
+import clientPromise from '@/pages/api/lib/db';
 
 export async function POST(request: NextRequest, response: NextResponse) {
+    const client: MongoClient = await clientPromise;
     const cookieName = 'session';
     if (!request.cookies.has(cookieName)) {
         return NextResponse.json({ error: 'Could not find session cookie in request' }, { status: 401 })
@@ -25,8 +27,15 @@ export async function POST(request: NextRequest, response: NextResponse) {
     else {
         // add the session cookie to the activity object
         activity.uuid = sessionCookie;
-        // Log the activity to a file
-        fs.appendFileSync('./logbook/user_activity.json', JSON.stringify(activity) + ',\n');
+        // Connect to the database and insert the activity object into the logbook collection
+        // Database name: logbook
+        // Collection name: user_activities
+        // document name: cookie
+
+        const db = client.db('logbook');
+        const collection = db.collection('user_activities');
+        await collection.insertOne(activity);
+
         return NextResponse.json({ message: 'Activity logged successfully' });
     }
 

@@ -15,7 +15,7 @@ const LinkCard = ({ title, active_description, inactive_description, to, newTab 
 }) => {
 
     const [active, setActive] = useState(false)
-    const [accepted_cookie, setAccepted_cookie] = useState(localStorage.getItem('accepted_cookie'))
+    const [accepted_cookie, setAccepted_cookie] = useState(typeof window !== 'undefined' ? localStorage.getItem('accepted_cookie') : null)
     const [final_to, setFinal_to] = useState(accepted_cookie ? `${to}?uuid=${uuid}` : to)
 
     useEffect(() => {
@@ -37,9 +37,8 @@ const LinkCard = ({ title, active_description, inactive_description, to, newTab 
     useEffect(() => {
         function checkLocalStorageUpdate() {
             setAccepted_cookie(localStorage.getItem('accepted_cookie'));
-            console.log('locaStorageChangeEvent: accepted_cookie: ', accepted_cookie)
             if (accepted_cookie === 'true') {
-                setFinal_to(`${to}?uuid=${uuid}`)
+                setFinal_to(accepted_cookie ? `${to}?uuid=${uuid}` : to);
             }
         }
 
@@ -53,15 +52,15 @@ const LinkCard = ({ title, active_description, inactive_description, to, newTab 
     }, [accepted_cookie, to, uuid]
     );
 
-    const active_styling = "group rounded-lg border px-5 py-4 transition-colors border-neutral-700 bg-[#18376E] hover:bg-[#EBE540]/50 shadow-xl text-white hover:text-black"
+    const active_styling = "group rounded-lg border px-5 py-4 transition-colors border-neutral-700 bg-amber-600 hover:bg-[#EBE540]/50 shadow-xl text-white hover:text-black"
     const inactive_styling = "rounded-lg border px-5 py-4 transition-colors border-neutral-700 bg-inherit text-black"
 
     return (
         <Link
-            href={active ? final_to : ' '}
+            href={final_to}
             className={active ? active_styling : inactive_styling}
             rel="noopener noreferrer"
-            target={newTab && active ? "_blank" : undefined}
+            target={"_blank"}
         >
             <h2 className={`mb-3 text-3xl md:text-5xl font-the-hand`}>
                 {title}{" "}

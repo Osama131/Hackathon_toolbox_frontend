@@ -4,10 +4,10 @@ import { Card, CardHeader, CardBody } from '@nextui-org/card'
 const Description = () => {
   return (
     <section className='w-full'>
-      <Card radius="none" className="border border-neutral-700 grid gap-6 mt-0 items-center justify-center bg-opacity-40 flex flex-col justify-between">
+      <Card radius="none" className="border border-[#C04C12] grid gap-6 mt-0 items-center justify-center bg-opacity-40 flex flex-col justify-between">
         <CardHeader className='flex flex-row items-center'>
           <Image
-            src="/hack-participant-kit/developer_female.svg"
+            src={`/hack-participant-kit/developer_female.svg`}
             alt="Female Developer Illustration"
             width={0}
             height={0}
@@ -17,7 +17,7 @@ const Description = () => {
             What will we be doing?
           </h1>
           <Image
-            src="/hack-participant-kit/developer_male.svg"
+            src={`/hack-participant-kit/developer_male.svg`}
             alt="Male Developer Illustration"
             width={0}
             height={0}
@@ -27,7 +27,7 @@ const Description = () => {
         <CardBody className='flex items-center justify-center'>
 
           <p className='font-the-hand text-center text-xl md:text-4xl text-center mx-10'>
-            We will work in groups to collaborate on a chapter for the DE-TEL Book.
+            We will work in groups to contribute to a Toolbox of Human-Centred Strategies for AI Literacy
           </p>
 
         </CardBody>
