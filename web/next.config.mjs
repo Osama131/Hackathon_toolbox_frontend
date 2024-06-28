@@ -6,8 +6,18 @@ import nextra from 'nextra';
 const nextConfig = {
     // Configure `pageExtensions` to include MDX files
     pageExtensions: ['js', 'jsx', 'ts', 'tsx'],
-    output: 'standalone'
+    output: 'standalone',
     // Optionally, add any other Next.js config below
+    // image sources
+    images: {
+        remotePatterns: [
+            // { protocol: 'https', hostname: 'docs.github.com' },
+            // { protocol: 'https', hostname: 'wac-cdn.atlassian.com' },
+            // { protocol: 'https', hostname: 'i.stack.imgur.com' },
+            // { protocol: 'https', hostname: 'upload.wikimedia.org' }
+        ],
+    },
+    basePath: process.env.BASE_PATH,
 };
 
 const withNextra = nextra({
