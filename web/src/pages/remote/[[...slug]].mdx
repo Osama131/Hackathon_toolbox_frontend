@@ -3,7 +3,7 @@ import { buildDynamicMDX, buildDynamicMeta } from 'nextra/remote'
 import { MDXProvider } from '@mdx-js/react'
 import json from '../../filepaths.json'
 
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
   const { user, repo, branch, docsPath, filePaths } = json
   const path = params.slug?.join('/') ?? 'index'
   const foundPath = filePaths.find(
@@ -25,11 +25,10 @@ export async function getStaticProps({ params }) {
   }
 }
 
-export const getStaticPaths = () => ({
-  fallback: 'blocking',
-  paths: json.filePaths.map(filePath => ({
-    params: { slug: filePath.replace(/\.mdx?$/, '').split('/') }
-  }))
-})
-
-<RemoteContent components={{ Callout, $Tabs: Tabs }} />
+<RemoteContent
+  components={{
+    Callout,
+    $Tabs: Tabs,
+    /* here we would add the comments and activity tracker and all components that are used in the mdx files*/
+  }}
+/>

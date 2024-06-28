@@ -1,4 +1,5 @@
 import EmojiScale from '@/components/emojiScale/EmojiScale';
+import Forum from '@/components/discussionForum/Forum';
 
 export default {
   logo: <span>Home</span>,
@@ -11,6 +12,7 @@ export default {
   darkMode: true,
   sidebar: { toggleButton: true },
   toc: { extraContent: EmojiScale },
+  main: ({ children }) => <>{children} <Forum/></>,
   feedback: { content: null },
   editLink: {
     component: null,
