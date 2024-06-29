@@ -36,5 +36,5 @@ jobs:
       env:
         MONGODB_PW: ${{ secrets.MONGODB_PW }}
         MONGODB_USER: ${{ secrets.MONGODB_USER }}
-        MONGODB_URI: ${{ vars.MONGODB_URI }}
+        MONGODB_URI: ${{ secrets.MONGODB_URI }}
         BASEPATH: ${{ vars.BASE_PATH }}
