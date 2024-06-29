@@ -34,5 +34,7 @@ jobs:
     # - run: npm test
     #   working-directory: ./web
       env:
+        MONGODB_PW: ${{ secrets.MONGODB_PW }}
+        MONGODB_USER: ${{ secrets.MONGODB_USER }}
         MONGODB_URI: ${{ vars.MONGODB_URI }}
         BASEPATH: ${{ vars.BASE_PATH }}
