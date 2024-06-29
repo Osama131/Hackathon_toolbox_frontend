@@ -3,7 +3,7 @@ import { cookies } from 'next/headers'
 
 
 export default async function sessionKeeper(request: NextRequest) {
-  let response = NextResponse.next()
+  const response = NextResponse.next()
 
   // Check if the session cookie is already set
   const cookieStore = cookies()
@@ -20,19 +20,13 @@ export default async function sessionKeeper(request: NextRequest) {
     // POST to /api/uuid
     const url = request.nextUrl.clone()
     url.pathname = `/api/uuid`
-    const api_response = await fetch(url, {
+    const response = await fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ uuid: cookieStore.get('session')?.value }),
     })
-    // check request status and log error if needed
-    if (!api_response.ok) {
-      console.error(`Error while trying to add or find uuid in database: ${api_response.statusText}`)
-      // return a 500 error
-      return NextResponse.json({ error: 'Error while trying to add or find uuid in database' }, { status: 500 });
-    }
   }
   return response
 }
