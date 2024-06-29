@@ -12,7 +12,7 @@ export default function sessionKeeper(request: NextRequest) {
     // Generate a new session cookie
     const session = generateNewUserToken()
     // Set the session cookie path to '/hack-participant-kit/ , expires in 30 days'
-    response.cookies.set('session', session, { expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000) , path: '/hack-participant-kit/'});
+    response.cookies.set('session', session, { expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000) });
   }
   return response
 }
