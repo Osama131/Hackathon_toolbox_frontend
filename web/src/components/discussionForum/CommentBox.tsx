@@ -4,6 +4,7 @@ import { Button, ButtonGroup } from "@nextui-org/button";
 import { genConfig, AvatarFullConfig } from 'react-nice-avatar'
 import dynamic from 'next/dynamic'
 const Avatar = dynamic(() => import('react-nice-avatar'), { ssr: false })
+import { Reload } from "./reload"
 
 interface CommentBoxProps {
   tutorialId: string;
@@ -107,16 +108,7 @@ const CommentBox: React.FC<CommentBoxProps> = ({ tutorialId, onUpdate }) => {
     localStorage.setItem('username', username);
   }, [username]);
 
-
-  // Avatar effect
-  const [avatarConfig, setAvatarConfig] = useState<AvatarFullConfig | null>(null);
-  useEffect(() => {
-    // try to find user's avatarConfig in the local storage
-    const avatarConfig = localStorage.getItem('avatarConfig');
-    if (avatarConfig) {
-      setAvatarConfig(JSON.parse(avatarConfig));
-      return;
-    }
+  const generateNewAvatar = () => {
     // if not found, generate a new avatarConfig and save it to the local storage, then store it on the server
     const newAvatarConfig = genConfig();
     setAvatarConfig(newAvatarConfig);
@@ -129,52 +121,18 @@ const CommentBox: React.FC<CommentBoxProps> = ({ tutorialId, onUpdate }) => {
       },
       body: JSON.stringify({ userName: username, avatarConfig: newAvatarConfig }),
     });
+  }
 
-
-    // // fetch the avatarConfig from the server
-    // fetch('/api/forumComment/avatar')
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     if (data.avatarConfig){
-    //       setAvatarConfig(data.avatarConfig);
-    //     }else{
-    //       // if no document is found, generate a new avatarConfig
-    //       const newAvatarConfig = genConfig();
-    //       setAvatarConfig(newAvatarConfig);
-    //       // post the new avatarConfig to the server
-    //       fetch('/api/forumComment/avatar', {
-    //         method: 'POST',
-    //         headers: {
-    //           'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify({ avatarConfig: newAvatarConfig }),
-    //       });
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     console.error('Error fetching avatarConfig: ', error);
-    //   });
-
-    // // use a fixed avatarConfig for testing
-    // const avatarConfig : AvatarFullConfig= {
-    //   "sex": "woman",
-    //   "faceColor": "#AC6651",
-    //   "earSize": "big",
-    //   "eyeStyle": "smile",
-    //   "noseStyle": "long",
-    //   "mouthStyle": "smile",
-    //   "shirtStyle": "short",
-    //   "glassesStyle": "none",
-    //   "hairColor": "#FC909F",
-    //   "hairStyle": "normal",
-    //   "hatStyle": "none",
-    //   "hatColor": "#D2EFF3",
-    //   "eyeBrowStyle": "upWoman",
-    //   "shirtColor": "#77311D",
-    //   "bgColor": "#74D153"
-    // }
-    // setAvatarConfig(avatarConfig);
-
+  // Avatar effect
+  const [avatarConfig, setAvatarConfig] = useState<AvatarFullConfig | null>(null);
+  useEffect(() => {
+    // try to find user's avatarConfig in the local storage
+    const avatarConfig = localStorage.getItem('avatarConfig');
+    if (avatarConfig) {
+      setAvatarConfig(JSON.parse(avatarConfig));
+      return;
+    }
+    generateNewAvatar();
   }, []);
 
 
@@ -202,11 +160,21 @@ const CommentBox: React.FC<CommentBoxProps> = ({ tutorialId, onUpdate }) => {
     setLoading(false);
   };
 
+
+  const onAvatarClicked = () => {
+    generateNewAvatar();
+  }
+
   return (
     <div className="flex items-start space-x-4 p-4 border rounded-lg shadow-sm">
       <div className="flex-1" >
         <div className="flex space-x-2 px-2">
-          <Avatar className="w-14 h-14" {...avatarConfig} />
+          <div className="relative w-14 h-14" onClick={onAvatarClicked} >
+            <div className="absolute z-10 hover:z-30 rounded-full hover:bg-black/50 w-full h-full ">
+              <Reload className="fill-white w-1/2 m-auto mt-4 " />
+            </div>
+            <Avatar className="absolute w-full h-full z-20 hover:z-0" {...avatarConfig} />
+          </div>
           <Input
             className=''
             type="Name" variant="bordered" label="Name" placeholder="Anonymous" value={username} onValueChange={(value) => setUsername(value)}
