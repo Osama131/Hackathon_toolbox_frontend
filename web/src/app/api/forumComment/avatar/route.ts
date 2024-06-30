@@ -26,9 +26,17 @@ export async function POST(request: NextRequest) {
     const db = client.db('comments');
 
     try {
-        // Example: Insert comment into the database
-        const result = await db.collection('avatars').insertOne(entry);
-        return NextResponse.json({ message: 'avatar added succesfully' }, { status: 200 })
+        //If avatar already exists, update it, then update all comments with the same uuid to the new avatar
+        const existingAvatar = await db.collection('avatars').findOne({ uuid: sessionCookie });
+        if (existingAvatar) {
+            await db.collection('avatars').updateOne({ uuid: sessionCookie }, { $set: { avatarConfig: body.avatarConfig } });
+            await db.collection('comments').updateMany({ uuid: sessionCookie }, { $set: { avatarConfig: body.avatarConfig } });
+            return NextResponse.json({ message: 'avatar updated succesfully' }, { status: 200 })
+        } else {
+            //If avatar does not exist, create a new one
+            await db.collection('avatars').insertOne(entry);
+            return NextResponse.json({ message: 'avatar added succesfully' }, { status: 200 })
+        }
     } catch (error) {
         return NextResponse.json({ error: 'Could not add avatar to database' }, { status: 500 });
     }
