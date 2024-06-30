@@ -70,7 +70,9 @@ const EmojiScale = () => {
             </CardBody>
             <Divider />
             <CardFooter>
-                Tell us more in the &nbsp;<Link href="#comments">comments</Link> &nbsp; below.
+                <span className="inline-block text-pretty">
+                    Tell us more in the &nbsp; <Link href="#comments">comments</Link> &nbsp; below.
+                </span>
             </CardFooter>
         </Card>
     );
