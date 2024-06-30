@@ -11,79 +11,6 @@ interface CommentBoxProps {
   onUpdate: Function;
 }
 
-
-// export const getServerSideProps = async (context: GetServerSidePropsContext) => {
-
-//   // get "session" cookie to read user UUID
-//   const cookies = parseCookies(context)
-//   const uuid = cookies.session || ''
-
-//   // Check if user already has an avatar saved in the database
-//   const client: MongoClient = await clientPromise;
-//   const db = client.db('comments');
-//   const  avatarConfig = await db.collection('avatars').findOne({ uuid });
-
-//   if (avatarConfig) {
-//     // Directly return the avatarConfig if it matches the expected structure
-//     return {
-//       props: {
-//         avatarConfig: avatarConfig,
-//       },
-//     };
-//   } else {
-//     // If no document is found, generate a new avatarConfig
-//     const newAvatarConfig = genConfig();
-//     await db.collection('avatars').insertOne({ uuid, avatarConfig: newAvatarConfig });
-
-//     return {
-//       props: {
-//         avatarConfig: newAvatarConfig,
-//       },
-//     };
-//   }
-// };
-
-// const NewComment: React.FC = () => {
-//     const [comment, setComment] = useState('');
-
-//     const handleCommentChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-//         setComment(event.target.value);
-//     };
-
-//     const handleSubmit = async () => {
-//         // Example submission logic, replace URL and handling as needed
-//         try {
-//             const response = await fetch('/api/forumComment', {
-//                 method: 'POST',
-//                 headers: {
-//                     'Content-Type': 'application/json',
-//                 },
-//                 body: JSON.stringify({ comment }),
-//             });
-
-//             if (!response.ok) {
-//                 throw new Error('Failed to submit comment');
-//             }
-
-//             console.log('Comment submitted: ', comment);
-//         } catch (error) {
-//               console.error('Error submitting comment: ', error);
-//         }
-
-//         setComment('');
-//     };
-
-//     return (
-//         <div>
-//             <textarea value={comment} onChange={handleCommentChange} />
-//             <button onClick={handleSubmit}>Add Comment</button>
-//         </div>
-//     );
-// };
-
-// export default NewComment;
-
-
 const CommentBox: React.FC<CommentBoxProps> = ({ tutorialId, onUpdate }) => {
   // export const CommentBox = () => {
 
@@ -108,13 +35,13 @@ const CommentBox: React.FC<CommentBoxProps> = ({ tutorialId, onUpdate }) => {
     localStorage.setItem('username', username);
   }, [username]);
 
-  const generateNewAvatar = () => {
+  const generateNewAvatar = async () => {
     // if not found, generate a new avatarConfig and save it to the local storage, then store it on the server
     const newAvatarConfig = genConfig();
     setAvatarConfig(newAvatarConfig);
     localStorage.setItem('avatarConfig', JSON.stringify(newAvatarConfig));
     // post the new avatarConfig to the server
-    fetch(`/hack-participant-kit/api/forumComment/avatar`, {
+    await fetch(`/hack-participant-kit/api/forumComment/avatar`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -125,16 +52,17 @@ const CommentBox: React.FC<CommentBoxProps> = ({ tutorialId, onUpdate }) => {
 
   // Avatar effect
   const [avatarConfig, setAvatarConfig] = useState<AvatarFullConfig | null>(null);
+
   useEffect(() => {
     // try to find user's avatarConfig in the local storage
     const avatarConfig = localStorage.getItem('avatarConfig');
     if (avatarConfig) {
       setAvatarConfig(JSON.parse(avatarConfig));
       return;
+    } else {
+      generateNewAvatar();
     }
-    generateNewAvatar();
   }, []);
-
 
   // post the comment to the server
   const postComment = async () => {
@@ -161,8 +89,9 @@ const CommentBox: React.FC<CommentBoxProps> = ({ tutorialId, onUpdate }) => {
   };
 
 
-  const onAvatarClicked = () => {
-    generateNewAvatar();
+  const onAvatarClicked = async () => {
+    await generateNewAvatar();
+    onUpdate()
   }
 
   return (
