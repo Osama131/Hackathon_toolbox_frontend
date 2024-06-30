@@ -1,34 +1,29 @@
 "use client"
 
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@nextui-org/react";
-import { useState, useEffect } from "react"
+import { use, useEffect } from "react"
 
-const ConsentDialog = () => {
+type ConsentDialogProps = {
+    onConsentAccepted: () => void;
+}
+
+const ConsentDialog = ({ onConsentAccepted }: ConsentDialogProps) => {
 
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
-    const accepted_cookie = "accepted_cookie"; // Declare the variable accepted_cookie
-
+    
     useEffect(() => {
-        if (typeof window !== 'undefined') {
-            if (localStorage.getItem(accepted_cookie) !== null) {
-                if (localStorage.getItem(accepted_cookie) === 'false') { onOpen(); }
-            }
+        const key = 'accepted_cookie';
+        const storedValue = localStorage.getItem(key);
+        if (storedValue === 'false' || storedValue === null) {
+            onOpen();
         }
-        else { onOpen(); }
-    }, [typeof window !== 'undefined' ? localStorage.getItem(accepted_cookie) : null])
+    }, [])
 
     const onAccept = () => {
         const key = 'accepted_cookie'; // Declare the variable key
-        document.cookie = "accepted_cookie=true; max-age=2592000";
+        document.cookie = `${key}=true; max-age=2592000`;
         localStorage.setItem(key, 'true');
-        window.dispatchEvent(new StorageEvent('storage', {
-            key: key, // Use the declared variable key
-            newValue: 'true',
-            oldValue: 'false',
-            storageArea: localStorage
-        }));
-        //reload the page to update the links
-        // window.location.reload();
+        onConsentAccepted();
         onOpenChange();
     }
 
