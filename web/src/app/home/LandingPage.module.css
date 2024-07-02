@@ -13,35 +13,3 @@
 .details__cardheader__sub {
   @apply text-xl md:text-4xl font-the-hand uppercase;
 }
-
-@keyframes scaleUp {
-  0% {
-    transform: scale(0);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes wiggle {
-  0% {
-    transform: rotate(30deg);
-  }
-
-  50% {
-    transform: rotate(-30deg);
-  }
-
-  100% {
-    transform: rotate(30deg);
-  }
-}
-
-.scaleUp {
-  animation: scaleUp 3s ease-in forwards;
-}
-
-.wiggle {
-  animation: wiggle 30s linear infinite;
-}

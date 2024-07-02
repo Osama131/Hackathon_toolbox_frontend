@@ -3,7 +3,7 @@ import styles from "./LandingPage.module.css";
 
 const Details = () => {
   return (
-    <section className="details flex w-full gap-3 overflow-x-clip border border-[#C04C12] bg-white/60">
+    <section className="details flex w-full gap-3 overflow-x-clip  bg-white/60">
         <Card radius="none" className={`${styles.details__card} -translate-x-4 bg-transparent`}>
             <CardHeader className={styles.details__cardheader}>
                 <h1 className={styles.details__cardheader__title}>When?</h1>
