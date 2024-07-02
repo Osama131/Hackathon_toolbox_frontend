@@ -4,7 +4,7 @@ import { Card, CardHeader, CardBody } from '@nextui-org/card'
 const Description = () => {
   return (
     <section className='w-full'>
-      <Card radius="none" className="border border-[#C04C12] grid gap-6 mt-0 items-center justify-center bg-opacity-40 flex flex-col justify-between">
+      <Card radius="none" className="grid gap-6 mt-0 items-center justify-center bg-opacity-40 flex flex-col justify-between">
         <CardHeader className='flex flex-row items-center'>
           <Image
             src={`/hack-participant-kit/developer_female.svg`}
