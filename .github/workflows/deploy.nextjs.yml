@@ -90,7 +90,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./web/.next
+          path: ./web/.next/standalone/.next/server/app
 
   # Deployment job
   deploy:
