@@ -1,33 +1,37 @@
 "use client"
 
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@nextui-org/react";
-import { use, useEffect } from "react"
+import { useState, useEffect } from "react"
+import { getCookie, setCookie } from 'cookies-next';
 
 type ConsentDialogProps = {
-    onConsentAccepted: () => void;
+    onConsentAccepted?: () => void;
 }
 
 const ConsentDialog = ({ onConsentAccepted }: ConsentDialogProps) => {
 
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
-    
+    const [alreadyRejected, setAlreadyRejected] = useState<boolean>(false);
+
+    const key = 'accepted_cookie';
     useEffect(() => {
-        const key = 'accepted_cookie';
-        const storedValue = localStorage.getItem(key);
-        if (storedValue === 'false' || storedValue === null) {
-            onOpen();
+        if (!alreadyRejected) {
+            const storedValue = getCookie(key);
+            if (!storedValue || storedValue === 'false') {
+                onOpen();
+            }
         }
     }, [])
 
     const onAccept = () => {
-        const key = 'accepted_cookie'; // Declare the variable key
-        document.cookie = `${key}=true; max-age=2592000`;
-        localStorage.setItem(key, 'true');
-        onConsentAccepted();
+        setCookie(key, 'true', { maxAge: 2592000 });
+        if (onConsentAccepted) onConsentAccepted();
         onOpenChange();
     }
 
     const onReject = () => {
+        setCookie(key, 'false', { maxAge: 60 });
+        setAlreadyRejected(true);
         onOpenChange();
     }
 
@@ -58,7 +62,6 @@ const ConsentDialog = ({ onConsentAccepted }: ConsentDialogProps) => {
                             </Button>
                             <Button color="primary" onPress={onAccept}>
                                 Sure 😊
-
                             </Button>
 
                         </ModalFooter>
