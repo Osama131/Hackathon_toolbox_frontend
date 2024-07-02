@@ -15,4 +15,9 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker compocse up -d --build
+      run: docker compose up -d --build
+      env:
+        MONGODB_PW: ${{ secrets.MONGODB_PW }}
+        MONGODB_USER: ${{ secrets.MONGODB_USER }}
+        MONGODB_URI: ${{ secrets.MONGODB_URI }}
+        BASEPATH: ${{ vars.BASE_PATH }}
