@@ -43,7 +43,7 @@ const ConsentDialog = ({ onConsentAccepted }: ConsentDialogProps) => {
                         <ModalHeader className="flex flex-col gap-1">Have a cookie 🍪</ModalHeader>
                         <ModalBody>
                             <p>
-                                We use a cookie to connect your pre-questionnaire and post-questionnaire answers to the tutorials you view on this website.
+                                We use a cookie to connect your post-questionnaire answers to the tutorials you view on this website.
                                 This will help us with our research.
                             </p>
                             <p>

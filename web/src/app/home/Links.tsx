@@ -30,13 +30,33 @@ const Links = () => {
 
       >
         <h2 className={`mb-3 text-3xl md:text-5xl font-the-hand`}>
-          {"Tutorials "}
+          {"Introduction to Git "}
           <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
             -&gt;
           </span>
+          <p className={`m-0 max-w-[30ch] text-xl md:text-3xl opacity-50 font-the-hand`}>
+            Tutorial
+          </p>
         </h2>
       </Link>
-      <LinkCard path={pre_questionnaire_link} title={"Pre-Questionnaire"} startTime={pre_quesstionnaire_start_time} endTime={pre_quesstionnaire_end_time} active_description={active_questionnaire_text} inactive_description={inactive_questionnaire_text}  />
+
+      <Link
+        href={'/tutorials/md_intro'}
+        className="group rounded-lg border px-5 py-4 transition-colors border-neutral-700 bg-amber-600 hover:bg-[#EBE540]/50 shadow-xl text-white hover:text-black"
+        rel="noopener noreferrer"
+
+      >
+        <h2 className={`mb-3 text-3xl md:text-5xl font-the-hand`}>
+          {"Introduction to Markdown "}
+          <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
+            -&gt;
+          </span>
+          <p className={`m-0 max-w-[30ch] text-xl md:text-3xl opacity-50 font-the-hand`}>
+            Tutorial
+          </p>
+        </h2>
+      </Link>
+      {/* <LinkCard path={pre_questionnaire_link} title={"Pre-Questionnaire"} startTime={pre_quesstionnaire_start_time} endTime={pre_quesstionnaire_end_time} active_description={active_questionnaire_text} inactive_description={inactive_questionnaire_text}  /> */}
       <LinkCard path={post_questionnaire_link} title={"Post-Questionnaire"} startTime={post_quesstionnaire_start_time} endTime={post_quesstionnaire_end_time} active_description={active_questionnaire_text} inactive_description={inactive_questionnaire_text} />
     </section>
 
