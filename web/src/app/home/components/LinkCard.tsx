@@ -88,7 +88,7 @@ const LinkCard = ({ title, active_description, inactive_description, path, newTa
                             <ModalHeader className="flex flex-col gap-1">Can we connect your answers in pre and post questionnaires?</ModalHeader>
                             <ModalBody>
                                 <p>
-                                    For our research, we need to connect your answers in the pre and post questionnaires together and to the tutorials you view on this website.
+                                    For our research, we need to connect your answers in the post-questionnaire to the tutorials you view on this website.
                                     We can only do this with your consent to store a cookie on your device. The cookie will be stored for 30 days then it will be deleted automatically.
                                 </p>
                             </ModalBody>
