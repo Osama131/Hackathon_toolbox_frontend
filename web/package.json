@@ -22,7 +22,7 @@
     "@types/mdx": "^2.0.12",
     "cookies-next": "^4.2.1",
     "framer-motion": "^11.1.7",
-    "mongodb": "^6.7.0",
+    "mongoose": "^8.5.1",
     "next": "^14.1.4",
     "next-auth": "^4.24.7",
     "nextra": "^2.13.4",
