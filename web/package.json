@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -23,10 +23,10 @@
     "cookies-next": "^4.2.1",
     "framer-motion": "^11.1.7",
     "mongodb": "^6.7.0",
-    "next": "^14.1.4",
+    "next": "^14.2.4",
     "next-auth": "^4.24.7",
-    "nextra": "^2.13.4",
-    "nextra-theme-docs": "^2.13.4",
+    "nextra": "^3.0.0-alpha.25",
+    "nextra-theme-docs": "^3.0.0-alpha.25",
     "nookies": "^2.5.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

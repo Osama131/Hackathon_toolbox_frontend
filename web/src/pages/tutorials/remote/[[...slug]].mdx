@@ -1,0 +1,96 @@
+import { Callout, RemoteContent, Tabs } from 'nextra/components'
+import { buildDynamicMDX, buildDynamicMeta } from 'nextra/remote'
+import { MDXProvider } from '@mdx-js/react'
+import EmojiScale from '@/components/emojiScale/EmojiScale';
+import Forum from '@/components/discussionForum/Forum';
+import { Card, CardHeader, CardBody, CardFooter, Divider, Textarea } from "@nextui-org/react";
+import { createCatchAllMeta } from 'nextra/catch-all'
+
+export async function getServerSideProps({ params }) {
+  //catsh the slug
+  const { slug } = params
+  const data =
+    `
+    ## Hello World! 
+    ${slug.join('/')}
+
+  
+
+    <Forum tutorialId={"${slug[0]}"} />
+  `
+
+  try {
+    const response = await fetch('http://localhost:3000/hack-participant-kit/api/events/');
+    if (!response.ok) {
+      throw new Error(`API call failed with status: ${response.status}`);
+    }
+    const jsonData = await response.json();
+
+    // Validate data
+    if (!jsonData.events) {
+      throw new Error('Invalid data structure received from API');
+    }
+
+    // find event where "name" === slug[0] in events[]
+
+    const eventMatch = jsonData.events.find(event => event.name.toLowerCase() === slug[0].toLowerCase());
+    if (!eventMatch) {
+      throw new Error(`No event found matching name: ${slug[0]}`);
+    }
+
+    const tutorials = eventMatch.tutorials; // [{"id": "xxxx", "title": "yyyy"}, ...]
+
+    // // Construct paths and metadata in a single iteration
+    // const tutorialsData = tutorials.map(tutorial => {
+    //   const path = `${tutorial.id}`;
+    //   const metadata = { title: tutorial.title };
+    //   return { path, metadata };
+    // });
+    // console.log("Fetched Tutorials: ", await JSON.stringify(tutorialsData[0].metadata))
+    let { __nextra_pageMap } = await buildDynamicMeta()
+    // find the tutorial with the same name in the __nextra_pageMap array if not found create one and add it to the array
+    // The array entry shall look like this { route: '/tutorials/remote/slug[0]', name: 'sulg[0]', children: [Array] }
+    // the first element of the children array shall be { 'data': {'id': 'title' } for all tuorials fetched
+    // the rest of the elements of the children array shall be { route: '/tutorials/remote/slug[0]/id', name: 'title' } . this shall be repeated for all fetched tutorials 
+
+
+    const eventPageMap = __nextra_pageMap.find(event => event.name.toLowerCase() === slug[0].toLowerCase());
+    if (!eventPageMap) {
+      var metaData;
+      const eventPageMap = { route: `/tutorials/remote/${slug[0]}`, name: slug[0], children: [] };
+      tutorials.forEach(tutorial => {
+        metaData = { ...metaData, [tutorial.id]: [tutorial.title] }
+        eventPageMap.children.push({ route: `/tutorials/remote/${slug[0]}/${tutorial.id}`, name: tutorial.id });
+      });
+      eventPageMap.children.unshift({ data: metaData });
+      // console.log("Debug2text:", JSON.stringify(eventPageMap))
+      // __nextra_pageMap[0].children.push(eventPageMap);
+    }
+
+    console.log("Debug2text:", JSON.stringify(__nextra_pageMap))
+
+    const dynamicMdx = await buildDynamicMDX(data, {
+      defaultShowCopyCode: true
+    })
+    return {
+      props: {
+        __nextra_pageMap,
+        ...dynamicMdx
+      }
+    }
+
+  } catch (error) {
+   
+   console.error("Failed to fetch or process tutorial data:", error.message);
+  }
+
+  return {
+    props: {
+      __nextra_pageMap: [],
+      error: 'Failed to fetch or process tutorial data'
+    }
+  }
+}
+
+
+<RemoteContent className="prose" components={{ Callout, $Tabs: Tabs, EmojiScale, Forum, Card, CardHeader, CardBody, CardFooter, Divider, Textarea }} />

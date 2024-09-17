@@ -33,7 +33,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/app/test_app_router/page.mdx"
-  ],
+, "src/pages/tutorials/_meta.js"  ],
   "exclude": [
     "node_modules"
   ]

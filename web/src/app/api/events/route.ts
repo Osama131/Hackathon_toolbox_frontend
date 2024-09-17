@@ -3,8 +3,9 @@ import { MongoClient } from 'mongodb';
 import clientPromise from '@/pages/api/lib/db';
 
 export async function GET(request: NextRequest) {
-    // Extract tutorialId from query parameters
-    const url = new URL(request.url);
+
+    // @todo: Extract tutorialId from query parameters
+    // const url = new URL(request.url);
 
     // Connect to the database and fetch the rating
     const client: MongoClient = await clientPromise;
@@ -64,7 +65,7 @@ export async function POST(request: NextRequest) {
 export async function PUT(request: NextRequest) {
     // Extract tutorialId from query parameters
     const url = new URL(request.url);
-    const id = url.searchParams.get('id');
+    const eventName = url.searchParams.get('eventName');
 
     // verify that the request body is a valid JSON object with the required fields
     let body;
@@ -88,12 +89,12 @@ export async function PUT(request: NextRequest) {
         // Check if an event with the same name and owner already exists
         const existingEvent = await db.collection('events').findOne({ name: body.name});
     
-        if (existingEvent) {
-            // If an event with the same name and owner exists, return a 409 Conflict response
-            return NextResponse.json({ error: 'Event with the same name and owner already exists' }, { status: 409 });
+        if (!existingEvent) {
+            // Event doesn't exist
+            return NextResponse.json({ error: 'Could not find requested event' }, { status: 404 });
         } else {
             // If no existing event is found, update the event
-            await db.collection('events').updateOne({ _id: id }, { $set: entry });
+            await db.collection('events').updateOne({ name: eventName }, { $set: entry });
             return NextResponse.json({ message: 'Event updated successfully' }, { status: 200 });
         }
     } catch (error) {
